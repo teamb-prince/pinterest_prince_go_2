@@ -1,0 +1,7 @@
+CREATE EXTENSION "uuid-ossp";
+
+CREATE TABLE topic
+(
+    id         UUID PRIMARY KEY DEFAULT UUID_GENERATE_V4(),
+    name TEXT
+)
