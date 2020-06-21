@@ -17,7 +17,7 @@ func Start(port int, dbConn *sql.DB) error {
 	data := db.NewSQLDataStorage(dbConn)
 	s3manager := awsmanager.NewS3Manager()
 	attachHandlers(router, data)
-	awsAttachHandlers(router, data, s3manager)
+	awsAttachHandlers(router, data, *s3manager)
 
 	s := &http.Server{
 		Addr:    fmt.Sprintf(":%d", port),
@@ -36,7 +36,7 @@ func attachHandlers(mux *mux.Router, data db.DataStorage) {
 	mux.HandleFunc("/topics", handlers.ServeTopics(data)).Methods(http.MethodGet)
 
 	mux.HandleFunc("/pins/{id}", handlers.ServePin(data)).Methods(http.MethodGet)
-	mux.HandleFunc("/pins", handlers.CreatePin(data)).Methods(http.MethodPost)
+
 	mux.HandleFunc("/pins", handlers.ServePins(data)).Methods(http.MethodGet)
 
 	mux.HandleFunc("/boards/{id}", handlers.ServeBoard(data)).Methods(http.MethodGet)
@@ -69,7 +69,8 @@ func attachHandlers(mux *mux.Router, data db.DataStorage) {
 
 }
 
-func awsAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager *awsmanager.S3Manager) {
-	mux.HandleFunc("/images/upload", handlers.UploadImage(s3manager)).Methods("POST")
+func awsAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager awsmanager.S3Manager) {
+	mux.HandleFunc("/pins/local", handlers.CreatePinLocal(data, s3manager)).Methods(http.MethodPost)
+	mux.HandleFunc("/pins/url", handlers.CreatePinURL(data, s3manager)).Methods(http.MethodPost)
 	// mux.HandleFunc("/images/resize", handlers.ResizeImage(s3manager)).Methods("POST")
 }

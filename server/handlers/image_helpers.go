@@ -6,10 +6,13 @@ import (
 	_ "image/gif"
 	_ "image/jpeg"
 	_ "image/png"
+	"mime/multipart"
 
 	"net/http"
 
 	"github.com/PuerkitoBio/goquery"
+	uuid "github.com/satori/go.uuid"
+	"github.com/teamb-prince/pinterest_prince_go/api/awsmanager"
 	"github.com/teamb-prince/pinterest_prince_go/logs"
 )
 
@@ -20,6 +23,7 @@ const (
 
 var getTitleError = errors.New("Faild get title from url")
 var getImageError = errors.New("Faild get image from url")
+var uploadImageError = errors.New("Faild upload image (S3)")
 
 func GetImageSize(imageUrl string) bool {
 
@@ -79,4 +83,18 @@ func GetImages(res *http.Response) ([]string, error) {
 		}
 	})
 	return result, nil
+}
+
+func UploadImage(s3 *awsmanager.S3Manager, file multipart.File, format string) (string, error) {
+
+	filename := uuid.NewV4().String()
+
+	// s3にあげる処理
+	url, err := s3.Upload(file, filename, format)
+	if err != nil {
+		return "", uploadImageError
+	}
+
+	return url, err
+
 }
