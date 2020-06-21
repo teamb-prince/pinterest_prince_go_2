@@ -1,8 +1,10 @@
-package aws
+package awsmanager
 
 import (
-	"bytes"
+	"errors"
 	"fmt"
+	"mime/multipart"
+	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
@@ -14,24 +16,41 @@ import (
 )
 
 type S3Manager struct {
-	Bucket     string
-	Uploader   *s3manager.Uploader
-	Downloader *s3manager.Downloader
+	Uploader        *s3manager.Uploader
+	Downloader      *s3manager.Downloader
+	Bucket          string
+	AccessKeyID     string
+	SecretAccessKey string
+	Region          string
+	Keys            string
 }
 
 func (s *S3Manager) Init() (err error) {
 
-	s.Bucket = "bucket-pinterest-001" // バケット名
-	err = godotenv.Load("../aws.env")
+	err = godotenv.Load("./aws.env")
 	if err != nil {
 		fmt.Println("Error, Could not import aws access key.")
 		return
 	}
-	creds := credentials.NewStaticCredentials("AWS_ACCESS_KEY", "AWS_SECRET_ACCESS_KEY", "")
-	sess, err := session.NewSession(&aws.Config{
-		Credentials: creds,
-		Region:      aws.String("ap-northeast-1")},
-	)
+
+	s.Bucket = os.Getenv("AWS_BUCKET_NAME")
+	s.AccessKeyID = os.Getenv("AWS_ACCESS_KEY_ID")
+	s.SecretAccessKey = os.Getenv("AWS_SECRET_ACCESS_KEY_ID")
+	s.Region = os.Getenv("AWS_REGION")
+	fmt.Println(s.Bucket)
+	fmt.Println(s.AccessKeyID)
+	fmt.Println(s.SecretAccessKey)
+	fmt.Println(s.Region)
+	s.Keys = "images"
+	sess := session.Must(session.NewSessionWithOptions(session.Options{
+		Config: aws.Config{
+			Credentials: credentials.NewStaticCredentialsFromCreds(credentials.Value{
+				AccessKeyID:     s.AccessKeyID,
+				SecretAccessKey: s.SecretAccessKey,
+			}),
+			Region: aws.String(s.Region),
+		},
+	}))
 	if err != nil {
 		return
 	}
@@ -42,24 +61,50 @@ func (s *S3Manager) Init() (err error) {
 	return
 }
 
-func (s *S3Manager) Upload(key string, body []byte) (err error) {
-	params := &s3manager.UploadInput{
-		Bucket: aws.String(s.Bucket),
-		Key:    aws.String(key),
-		Body:   bytes.NewReader(body),
+func (s *S3Manager) Upload(file multipart.File, fileName string, extension string) (url string, err error) {
+
+	if fileName == "" {
+		return "", errors.New("fileName is required")
 	}
 
-	_, err = s.Uploader.Upload(params)
+	var contentType string
 
-	return nil
+	switch extension {
+	case "jpg":
+		contentType = "image/jpeg"
+	case "jpeg":
+		contentType = "image/jpeg"
+	case "gif":
+		contentType = "image/gif"
+	case "png":
+		contentType = "image/png"
+	default:
+		return "", errors.New("this extension is invalid")
+	}
+
+	// Upload the file to S3.
+	result, err := s.Uploader.Upload(&s3manager.UploadInput{
+		// ACL の設定は重要
+		ACL:         aws.String("public-read"),
+		Body:        file,
+		Bucket:      aws.String(s.Bucket),
+		ContentType: aws.String(contentType),
+		Key:         aws.String(s.Keys + "/" + fileName),
+	})
+
+	if err != nil {
+		return "", fmt.Errorf("failed to upload file, %v", err)
+	}
+
+	return result.Location, nil
 }
 
-func (s *S3Manager) Download(key string) ([]byte, error) {
+func (s *S3Manager) Download(fileName string) ([]byte, error) {
 	buffer := aws.NewWriteAtBuffer([]byte{})
 
 	_, err := s.Downloader.Download(buffer, &s3.GetObjectInput{
 		Bucket: aws.String(s.Bucket),
-		Key:    aws.String(key),
+		Key:    aws.String(s.Keys + "/" + fileName),
 	})
 	if err != nil {
 		if err, ok := err.(awserr.Error); ok && err.Code() == "NoSuchKey" {
@@ -72,6 +117,9 @@ func (s *S3Manager) Download(key string) ([]byte, error) {
 
 }
 
-func NewS3Manager() {
-	s3 S3Manager
+func NewS3Manager() *S3Manager {
+	var s3 S3Manager
+	_ = s3.Init()
+	fmt.Println(s3.Bucket)
+	return &s3
 }
