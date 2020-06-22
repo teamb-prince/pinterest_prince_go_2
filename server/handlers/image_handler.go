@@ -58,10 +58,14 @@ func GetImage() func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
+		// descriptionをとりあえず入れる
+		description := "sample description!!"
+
 		resJson := view.Images{
 			OriginalURL: url,
 			ImageURL:    images,
 			Title:       title,
+			Description: description,
 		}
 
 		bytes, err := json.Marshal(resJson)
