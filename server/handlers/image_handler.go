@@ -44,7 +44,7 @@ func GetImage() func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
-		images, err := GetImages(res)
+		images, err := GetImages(url, res)
 		if err != nil {
 			logs.Error("%v", err)
 			InternalServerError(w, r)
