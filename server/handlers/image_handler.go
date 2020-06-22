@@ -27,8 +27,6 @@ func GetImage() func(http.ResponseWriter, *http.Request) {
 
 		url := imageInfo.URL
 
-		// TODO 適切なディレクトリ構成にする
-
 		res, err := http.Get(url)
 		if err != nil {
 			logs.Error("%v", err)

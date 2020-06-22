@@ -13,6 +13,7 @@ import (
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/joho/godotenv"
+	"github.com/teamb-prince/pinterest_prince_go/logs"
 )
 
 type S3Manager struct {
@@ -29,7 +30,7 @@ func (s *S3Manager) Init() (err error) {
 
 	err = godotenv.Load("./aws.env")
 	if err != nil {
-		fmt.Println("Error, Could not import aws access key.")
+		logs.Error("Error, Could not import aws access key.")
 		return
 	}
 
@@ -37,10 +38,6 @@ func (s *S3Manager) Init() (err error) {
 	s.AccessKeyID = os.Getenv("AWS_ACCESS_KEY_ID")
 	s.SecretAccessKey = os.Getenv("AWS_SECRET_ACCESS_KEY_ID")
 	s.Region = os.Getenv("AWS_REGION")
-	fmt.Println(s.Bucket)
-	fmt.Println(s.AccessKeyID)
-	fmt.Println(s.SecretAccessKey)
-	fmt.Println(s.Region)
 	s.Keys = "images"
 	sess := session.Must(session.NewSessionWithOptions(session.Options{
 		Config: aws.Config{
@@ -82,9 +79,7 @@ func (s *S3Manager) Upload(file multipart.File, fileName string, extension strin
 		return "", errors.New("this extension is invalid")
 	}
 
-	// Upload the file to S3.
 	result, err := s.Uploader.Upload(&s3manager.UploadInput{
-		// ACL の設定は重要
 		ACL:         aws.String("public-read"),
 		Body:        file,
 		Bucket:      aws.String(s.Bucket),
@@ -120,6 +115,5 @@ func (s *S3Manager) Download(fileName string) ([]byte, error) {
 func NewS3Manager() *S3Manager {
 	var s3 S3Manager
 	_ = s3.Init()
-	fmt.Println(s3.Bucket)
 	return &s3
 }

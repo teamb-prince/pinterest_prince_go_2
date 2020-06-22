@@ -53,7 +53,6 @@ func TestServeUser(t *testing.T) {
 			req := httptest.NewRequest(http.MethodGet, url+endpoint+"/"+c.ID, nil)
 
 			router.ServeHTTP(recorder, req)
-			// body := recorder.Body.Bytes()
 
 			assert.Equal(t, c.Code, recorder.Code, "Status code should match reference")
 
@@ -98,7 +97,6 @@ func TestServeUsers(t *testing.T) {
 			req := httptest.NewRequest(http.MethodGet, url+endpoint, nil)
 
 			router.ServeHTTP(recorder, req)
-			// body := recorder.Body.Bytes()
 
 			assert.Equal(t, c.Code, recorder.Code, "Status code should match reference")
 
