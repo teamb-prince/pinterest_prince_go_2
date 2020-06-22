@@ -54,7 +54,6 @@ func GetTitle(res *http.Response) (string, error) {
 		logs.Error("%v", err)
 		return "", getTitleError
 	}
-	// defer res.Body.Close()
 
 	var title string
 
@@ -73,7 +72,6 @@ func GetImages(baseURL string, res *http.Response) ([]string, error) {
 		logs.Error("%v", err)
 		return nil, getImageError
 	}
-	// defer res.Body.Close()
 
 	var result []string = make([]string, 0)
 
