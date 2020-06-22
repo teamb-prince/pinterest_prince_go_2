@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -26,7 +25,6 @@ func ServeUsers(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 
 		users, err := data.GetUsers(limit, offset)
 		if err != nil {
-			fmt.Println(err)
 			logs.Error("Request: %s, Internal Server Error (DB error): %v", RequestSummary(r), err)
 			InternalServerError(w, r)
 			return
@@ -62,7 +60,6 @@ func ServeUsersInfo(data db.DataStorage) func(http.ResponseWriter, *http.Request
 
 		users, err := data.GetUsers(limit, offset)
 		if err != nil {
-			fmt.Println(err)
 			logs.Error("Request: %s, Internal Server Error (DB error): %v", RequestSummary(r), err)
 			InternalServerError(w, r)
 			return
@@ -98,12 +95,10 @@ func ServeUserInfo(data db.DataStorage) func(http.ResponseWriter, *http.Request)
 		user, err := data.GetUser(userID)
 		if err != nil {
 			if err.Error() == "IdNotFound" {
-				fmt.Println(err)
 				logs.Error("Request: %s, User ID Not Found: %v", RequestSummary(r), err)
 				NotFound(w, r)
 				return
 			} else {
-				fmt.Println(err)
 				logs.Error("Request: %s, Internal Server Error (DB error): %v", RequestSummary(r), err)
 				InternalServerError(w, r)
 				return
@@ -142,12 +137,10 @@ func ServeUser(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 		if err != nil {
 
 			if err.Error() == "IdNotFound" {
-				fmt.Println(err)
 				logs.Error("Request: %s, User ID Not Found: %v", RequestSummary(r), err)
 				NotFound(w, r)
 				return
 			} else {
-				fmt.Println(err)
 				logs.Error("Request: %s, Internal Server Error (DB error): %v", RequestSummary(r), err)
 				InternalServerError(w, r)
 				return

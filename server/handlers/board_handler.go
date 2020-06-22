@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"net/http"
 	"strconv"
 	"time"
@@ -35,12 +34,10 @@ func ServeBoard(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 		if err != nil {
 
 			if err.Error() == "IdNotFound" {
-				fmt.Println(err)
 				logs.Error("Request: %s, Board ID Not Found: %v", RequestSummary(r), err)
 				NotFound(w, r)
 				return
 			} else {
-				fmt.Println(err)
 				logs.Error("Request: %s, Internal Server Error (DB ERROR): %v", RequestSummary(r), err)
 				InternalServerError(w, r)
 				return
@@ -80,7 +77,6 @@ func ServeBoards(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 
 		boards, err := data.GetBoards(userID, topicID, limit, offset)
 		if err != nil {
-			fmt.Println(err)
 			logs.Error("Request: %s, Internal Server Error (DB ERROR): %v", RequestSummary(r), err)
 			InternalServerError(w, r)
 			return

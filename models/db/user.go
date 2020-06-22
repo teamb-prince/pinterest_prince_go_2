@@ -20,7 +20,6 @@ type User struct {
 	CreatedAt    *time.Time
 }
 
-// [TODO] 今全部返しているけどここどうするか議論
 func (data SQLDataStorage) GetUsers(limit int, offset int) ([]*User, error) {
 
 	if limit == 0 {

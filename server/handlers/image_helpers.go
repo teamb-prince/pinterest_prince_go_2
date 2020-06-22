@@ -18,7 +18,6 @@ import (
 )
 
 const (
-	// TODO あとで議論
 	minImageSize = 200
 )
 
@@ -92,7 +91,6 @@ func UploadImage(s3 *awsmanager.S3Manager, file multipart.File, format string) (
 
 	filename := uuid.NewV4().String()
 
-	// s3にあげる処理
 	url, err := s3.Upload(file, filename, format)
 	if err != nil {
 		return "", uploadImageError

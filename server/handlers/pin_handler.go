@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"image"
 	"net/http"
 	"strconv"
@@ -68,12 +67,10 @@ func ServePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 		if err != nil {
 
 			if err.Error() == "IdNotFound" {
-				fmt.Println(err)
 				logs.Error("Request: %s, Pin ID Not Found: %v", RequestSummary(r), err)
 				NotFound(w, r)
 				return
 			} else {
-				fmt.Println(err)
 				logs.Error("Request: %s, Internal Server Error (DB Error): %v", RequestSummary(r), err)
 				InternalServerError(w, r)
 				return
@@ -169,7 +166,6 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 		defer file.Close()
 		_, format, err := image.DecodeConfig(file)
 		if err != nil {
-			// 画像フォーマットではない場合はエラーが発生する
 			logs.Error("Request: %s, Invalid format: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return

@@ -62,7 +62,6 @@ func attachHandlers(mux *mux.Router, data db.DataStorage) {
 	// mux.HandleFunc("/logout", handlers.SignOut(al)).Methods(http.MethodPost)
 
 	// [TODO] tokens
-	// mux.HandleFunc("/tokens", handlers.ServeTokens(data)).Methods(http.MethodGet)
 	// mux.HandleFunc("/tokens", handlers.DeleteTokens(data)).Methods(http.MethodDelete)
 
 	mux.HandleFunc("/images/url-images", handlers.GetImage()).Methods(http.MethodPost)

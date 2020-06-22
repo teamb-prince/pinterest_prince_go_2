@@ -49,7 +49,6 @@ func TestServeTopic(t *testing.T) {
 			req := httptest.NewRequest(http.MethodGet, url+endpoint, nil)
 
 			router.ServeHTTP(recorder, req)
-			// body := recorder.Body.Bytes()
 
 			assert.Equal(t, c.Code, recorder.Code, "Status code should match reference")
 
