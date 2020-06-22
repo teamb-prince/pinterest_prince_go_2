@@ -36,13 +36,16 @@ func GetImage() func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
-		defer res.Body.Close()
-
 		if res.StatusCode != 200 {
 			logs.Error("Status Code: %d %s\n", res.StatusCode, res.Status)
 			HttpErrorHandler(res.StatusCode, w, r)
 			return
 		}
+
+		metadata := GetMetadata(res.Body)
+
+		title := metadata.Title
+		description := metadata.Description
 
 		images, err := GetImages(url, res)
 		if err != nil {
@@ -50,16 +53,6 @@ func GetImage() func(http.ResponseWriter, *http.Request) {
 			InternalServerError(w, r)
 			return
 		}
-
-		title, err := GetTitle(res)
-		if err != nil {
-			logs.Error("%v", err)
-			InternalServerError(w, r)
-			return
-		}
-
-		// descriptionをとりあえず入れる
-		description := "sample description!!"
 
 		resJson := view.Images{
 			OriginalURL: url,
@@ -74,6 +67,8 @@ func GetImage() func(http.ResponseWriter, *http.Request) {
 			InternalServerError(w, r)
 			return
 		}
+
+		defer res.Body.Close()
 
 		w.Header().Set(contentType, jsonContent)
 		_, err = w.Write(bytes)
