@@ -5,6 +5,7 @@ import (
 	"image"
 	"net/http"
 	"strconv"
+	"strings"
 	"time"
 
 	"github.com/gorilla/mux"
@@ -164,6 +165,7 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 			return
 		}
 		defer file.Close()
+
 		_, format, err := image.DecodeConfig(file)
 		if err != nil {
 			logs.Error("Request: %s, Invalid format: %v", RequestSummary(r), err)
@@ -180,32 +182,29 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 
 		requestPin := &view.PinRequest{}
 
-		reqJson, _, err := r.FormFile("json")
-		if err != nil {
-			logs.Error("Request: %s, unable to FormFile (json): %v", RequestSummary(r), err)
-			BadRequest(w, r)
-			return
-		}
+		reqJson := r.FormValue("json")
 
-		if err := json.NewDecoder(reqJson).Decode(requestPin); err != nil {
+		if err := json.NewDecoder(strings.NewReader(reqJson)).Decode(requestPin); err != nil {
 			logs.Error("Request: %s, unable to parse content: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}
-		url := requestPin.URL
 
-		res, err := http.Get(url)
-		if err != nil {
-			logs.Error("%v", err)
-			BadRequest(w, r)
-			return
+		url := requestPin.URL
+		if url != "" {
+			res, err := http.Get(url)
+			if err != nil {
+				logs.Error("%v", err)
+				BadRequest(w, r)
+				return
+			}
+			if res.StatusCode != 200 {
+				logs.Error("status code error: %d %s\n", res.StatusCode, res.Status)
+				HttpErrorHandler(res.StatusCode, w, r)
+				return
+			}
+			defer res.Body.Close()
 		}
-		if res.StatusCode != 200 {
-			logs.Error("status code error: %d %s\n", res.StatusCode, res.Status)
-			HttpErrorHandler(res.StatusCode, w, r)
-			return
-		}
-		defer res.Body.Close()
 
 		now := time.Now()
 		storedPin := &db.Pin{
