@@ -20,6 +20,50 @@ type Pin struct {
 	CreatedAt      *time.Time
 }
 
+func (data SQLDataStorage) DiscoverPins(limit int, offset int) ([]*Pin, error) {
+
+	if limit == 0 {
+		limit = 100
+	}
+
+	var query string
+	var queryArgs []interface{}
+
+	query = (`
+		SELECT p.id, p.user_id, p.original_user_id, p.url, p.title, p.image_url, p.board_id, p.description, p.created_at
+		FROM pin p
+		ORDER BY RANDOM()
+		LIMIT $1
+		OFFSET $2
+		`)
+
+	queryArgs = []interface{}{limit, offset}
+
+	rows, err := data.DB.Query(query, queryArgs...)
+	if err != nil {
+		return nil, err
+	}
+	defer rows.Close()
+
+	var pins []*Pin = make([]*Pin, 0)
+	for rows.Next() {
+		var pin Pin
+		err := rows.Scan(&pin.ID, &pin.UserID, &pin.OriginalUserID, &pin.URL, &pin.Title, &pin.ImageURL, &pin.BoardID, &pin.Description, &pin.CreatedAt)
+		if err != nil {
+			return nil, err
+		}
+
+		pins = append(pins, &pin)
+	}
+
+	err = rows.Err()
+	if err != nil {
+		return nil, err
+	}
+
+	return pins, nil
+}
+
 func (data SQLDataStorage) GetPins(userID string, boardID uuid.UUID, limit int, offset int) ([]*Pin, error) {
 
 	if userID == "" {
