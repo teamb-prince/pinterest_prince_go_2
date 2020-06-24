@@ -95,7 +95,7 @@ func (data SQLDataStorage) GetUser(userID string) (*User, error) {
 func (data SQLDataStorage) StoreUser(user *User) error {
 
 	query := `
-	INSERT INTO user (id, first_name, last_name, email, password_hash, role, profile_image, description, location, web, created_at) 
+	INSERT INTO user_account (id, first_name, last_name, email, password_hash, role, profile_image, description, location, web, created_at) 
 	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
 	RETURNING id
 	`

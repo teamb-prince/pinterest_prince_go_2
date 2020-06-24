@@ -3,6 +3,8 @@ package handlers
 import (
 	"fmt"
 	"net/http"
+
+	"golang.org/x/crypto/bcrypt"
 )
 
 type FieldValidationRes struct {
@@ -56,4 +58,9 @@ func HttpErrorHandler(statusCode int, w http.ResponseWriter, r *http.Request) {
 	} else {
 		InternalServerError(w, r)
 	}
+}
+
+func HashPassword(password string) (string, error) {
+	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+	return string(hashedPassword), err
 }
