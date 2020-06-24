@@ -306,10 +306,8 @@ VALUES ('fe3ead68-eeea-49a7-8b1b-da6184c93390',
 
 -- ----------- token -----------
 -- [TODO] 確認用トークン ずっと使える いるかな？
-INSERT INTO token (id, user_id, expire)  
-VALUES ('45ffac79-4469-4042-9606-8f5aa47231e9', 
-'mrypq',
-'2030-01-11 10:10:10+09');
+INSERT INTO token (id)  
+VALUES ('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW4iLCJzdWIiOiJtcnlwcSIsImlhdCI6MTUxNjIzOTAyMiwiZXhwIjoyMDE2MjM5MDIyfQ.pQnjvROwyIki8ywKMl0Hm66_bDuJ1Pa1aPM_kDU93gQ');
 
 
 

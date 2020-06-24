@@ -58,7 +58,7 @@ func attachHandlers(mux *mux.Router, data db.DataStorage) {
 
 	// [TODO] Auth
 	// mux.HandleFunc("/auth/register", handlers.RegisterUser(data, al)).Methods(http.MethodPost)
-	// mux.HandleFunc("/login", handlers.AuthenticateUser(data, al)).Methods(http.MethodPost)
+	mux.HandleFunc("/login", handlers.AuthenticateUser(data)).Methods(http.MethodPost)
 	// mux.HandleFunc("/logout", handlers.SignOut(al)).Methods(http.MethodPost)
 
 	// [TODO] tokens

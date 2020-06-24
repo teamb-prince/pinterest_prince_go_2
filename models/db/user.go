@@ -20,6 +20,8 @@ type User struct {
 	CreatedAt    *time.Time
 }
 
+var IDNotFoundErr = errors.New("IdNotFound")
+
 func (data SQLDataStorage) GetUsers(limit int, offset int) ([]*User, error) {
 
 	if limit == 0 {
@@ -82,7 +84,7 @@ func (data SQLDataStorage) GetUser(userID string) (*User, error) {
 		}
 	}
 	if user == nil {
-		return nil, errors.New("IdNotFound")
+		return nil, IDNotFoundErr
 	}
 
 	if err = rows.Err(); err != nil {
