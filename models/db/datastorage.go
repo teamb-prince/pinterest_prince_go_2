@@ -9,6 +9,7 @@ import (
 type DataStorage interface {
 	GetTopics() ([]*Topic, error)
 	GetPin(pinID uuid.UUID) (*Pin, error)
+	DiscoverPins(limit int, offset int) ([]*Pin, error)
 	GetPins(userID string, boardID uuid.UUID, limit int, offset int) ([]*Pin, error)
 	StorePin(pin *Pin) error
 	GetBoard(boardID uuid.UUID) (*Board, error)

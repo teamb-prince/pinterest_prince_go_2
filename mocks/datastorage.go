@@ -20,6 +20,10 @@ func (db SQLDataStoreMock) GetTopics() ([]*db.Topic, error) {
 	return db.ExpectedTopics, db.ExpectedError
 }
 
+func (db SQLDataStoreMock) DiscoverPins(limit int, offset int) ([]*db.Pin, error) {
+	return db.ExpectedPins, db.ExpectedError
+}
+
 func (db SQLDataStoreMock) GetPins(userID string, boardID uuid.UUID, limit int, offset int) ([]*db.Pin, error) {
 	return db.ExpectedPins, db.ExpectedError
 }

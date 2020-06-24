@@ -47,6 +47,35 @@ func ServePins(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	}
 }
 
+func DiscoverPins(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		qValues := r.URL.Query()
+		limit, _ := strconv.Atoi(qValues.Get("limit"))
+		offset, _ := strconv.Atoi(qValues.Get("offset"))
+
+		pins, err := data.DiscoverPins(limit, offset)
+		if err != nil {
+			logs.Error("Request: %s, reading pins from database: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+		bytes, err := json.Marshal(view.NewPins(pins))
+		if err != nil {
+			logs.Error("Request: %s, Serialize Error: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+		w.Header().Set(contentType, jsonContent)
+
+		if _, err = w.Write(bytes); err != nil {
+			logs.Error("Request: %s, writing response: %v", RequestSummary(r), err)
+		}
+	}
+}
+
 func ServePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != "GET" {
