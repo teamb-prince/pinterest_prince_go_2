@@ -59,3 +59,7 @@ func (db SQLDataStoreMock) GetUsers(limit int, offset int) ([]*db.User, error) {
 func (db SQLDataStoreMock) StoreUser(user *db.User) error {
 	return db.ExpectedError
 }
+
+func (db SQLDataStoreMock) StoreToken(token *db.Token) error {
+	return db.ExpectedError
+}

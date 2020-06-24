@@ -18,6 +18,7 @@ type DataStorage interface {
 	GetUser(userID string) (*User, error)
 	GetUsers(limit int, offset int) ([]*User, error)
 	StoreUser(user *User) error
+	StoreToken(user *Token) error
 }
 
 func NewSQLDataStorage(sqlDB *sql.DB) SQLDataStorage {
