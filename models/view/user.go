@@ -21,17 +21,9 @@ type User struct {
 }
 
 type RequestUser struct {
-	ID           string     `json:"id"`
-	FirstName    string     `json:"first_name"`
-	LastName     string     `json:"last_name"`
-	Email        string     `json:"email"`
-	PasswordHash string     `json:"password_hash"`
-	Role         string     `json:"role"`
-	ProfileImage string     `json:"profile_image"`
-	Description  string     `json:"description"`
-	Location     string     `json:"location"`
-	Web          string     `json:"web"`
-	CreatedAt    *time.Time `json:"created_at"`
+	ID       string `json:"id"`
+	Email    string `json:"email"`
+	Password string `json:"password"`
 }
 
 type UserInfo struct {

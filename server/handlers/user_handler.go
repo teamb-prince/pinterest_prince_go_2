@@ -176,18 +176,21 @@ func CreateUser(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
+		hashedPassword, err := HashPassword(requestUser.Password)
+		if err != nil {
+			logs.Error("Request: %s, unable to hash password: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+		role := "user"
 		now := time.Now()
+
 		storedUser := &db.User{
 			ID:           requestUser.ID,
-			FirstName:    requestUser.FirstName,
-			LastName:     requestUser.LastName,
 			Email:        requestUser.Email,
-			PasswordHash: requestUser.PasswordHash,
-			Role:         requestUser.Role,
-			ProfileImage: requestUser.ProfileImage,
-			Description:  requestUser.Description,
-			Location:     requestUser.Location,
-			Web:          requestUser.Web,
+			PasswordHash: hashedPassword,
+			Role:         role,
 			CreatedAt:    &now,
 		}
 
@@ -208,6 +211,7 @@ func CreateUser(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 
 		if _, err = w.Write(bytes); err != nil {
 			logs.Error("Request: %s, writing response: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
 		}
 	}
 }
