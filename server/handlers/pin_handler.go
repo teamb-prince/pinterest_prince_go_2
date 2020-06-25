@@ -150,9 +150,11 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 		}
 		defer res.Body.Close()
 
+		uploadType := "url"
 		now := time.Now()
 		storedPin := &db.Pin{
 			ID:             uuid.Nil,
+			OriginalID:     uuid.Nil,
 			UserID:         requestPin.UserID,
 			OriginalUserID: requestPin.OriginalUserID,
 			URL:            requestPin.URL,
@@ -160,6 +162,7 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 			ImageURL:       requestPin.ImageURL,
 			BoardID:        requestPin.BoardID,
 			Description:    requestPin.Description,
+			UploadType:     uploadType,
 			CreatedAt:      &now,
 		}
 
@@ -235,9 +238,11 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 			defer res.Body.Close()
 		}
 
+		uploadType := "local"
 		now := time.Now()
 		storedPin := &db.Pin{
 			ID:             uuid.Nil,
+			OriginalID:     uuid.Nil,
 			UserID:         requestPin.UserID,
 			OriginalUserID: requestPin.OriginalUserID,
 			URL:            requestPin.URL,
@@ -245,6 +250,7 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 			ImageURL:       s3Url,
 			BoardID:        requestPin.BoardID,
 			Description:    requestPin.Description,
+			UploadType:     uploadType,
 			CreatedAt:      &now,
 		}
 

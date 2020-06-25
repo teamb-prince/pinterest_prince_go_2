@@ -60,8 +60,8 @@ VALUES ('0910d8c3-2a26-4a8d-bf24-c46e2e5718ea', 'mrypq',
 
 
 -- ----------- pin -----------
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('12130347-8e9c-4a27-8fcb-2aeaea38c196', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('12130347-8e9c-4a27-8fcb-2aeaea38c196', '12130347-8e9c-4a27-8fcb-2aeaea38c196', 
 'mrypq',
 'mrypq',
 'https://www.canmake.com/topics/detail/18',
@@ -69,10 +69,11 @@ VALUES ('12130347-8e9c-4a27-8fcb-2aeaea38c196',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/ucnail_news%26topics.jpg',
 '0910d8c3-2a26-4a8d-bf24-c46e2e5718ea',
 '',
+'url',
 '2020-02-22 12:30:22+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('ca1fd1bb-7cae-443d-bdb2-25ad4c50790c', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('ca1fd1bb-7cae-443d-bdb2-25ad4c50790c', 'ca1fd1bb-7cae-443d-bdb2-25ad4c50790c', 
 'mrypq',
 'mrypq',
 'https://ex-ichiba.jp/blog/2020/03/05/post_698/',
@@ -80,11 +81,12 @@ VALUES ('ca1fd1bb-7cae-443d-bdb2-25ad4c50790c',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/IMG_2368-650x645.jpg',
 '0910d8c3-2a26-4a8d-bf24-c46e2e5718ea',
 '',
+'url',
 '2020-02-22 12:30:22+09');
 
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('7cbffef8-1c4a-4faa-9953-821177b5bddf', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('7cbffef8-1c4a-4faa-9953-821177b5bddf', '7cbffef8-1c4a-4faa-9953-821177b5bddf', 
 'mrypq',
 'mrypq',
 'https://favor.life/27484',
@@ -92,10 +94,11 @@ VALUES ('7cbffef8-1c4a-4faa-9953-821177b5bddf',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/27484-time.jpg',
 '0910d8c3-2a26-4a8d-bf24-c46e2e5718ea',
 '',
+'url',
 '2020-02-22 12:20:22+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('befa1ab8-3a18-4580-a206-5f531c20f9da', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('befa1ab8-3a18-4580-a206-5f531c20f9da', 'befa1ab8-3a18-4580-a206-5f531c20f9da', 
 'mrypq',
 'mrypq',
 'https://www.fashion-press.net/news/54016',
@@ -103,11 +106,12 @@ VALUES ('befa1ab8-3a18-4580-a206-5f531c20f9da',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/ZRw.jpg',
 '0910d8c3-2a26-4a8d-bf24-c46e2e5718ea',
 'クリスマスコフレ❤︎',
+'url',
 '2020-02-22 12:10:22+09');
 
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('cc2a8e31-725f-473e-9637-ab1411be7c2b', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('cc2a8e31-725f-473e-9637-ab1411be7c2b', 'cc2a8e31-725f-473e-9637-ab1411be7c2b', 
 'mrypq2',
 'mrypq2',
 'http://trcps-3cats.net/2017/06/29/mikeneko/',
@@ -115,10 +119,11 @@ VALUES ('cc2a8e31-725f-473e-9637-ab1411be7c2b',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/0625_3.jpg',
 'ca4550c7-0ddb-44c2-bda7-aa32bc066a99',
 'ねこかわいいねこ〜',
+'url',
 '2020-02-22 10:10:22+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('e5a84729-6251-4b2b-b62e-ffab8a1eebac', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('e5a84729-6251-4b2b-b62e-ffab8a1eebac', 'e5a84729-6251-4b2b-b62e-ffab8a1eebac', 
 'mrypq2',
 'mrypq2',
 'https://nekochan.jp/cattype/article/755',
@@ -126,10 +131,11 @@ VALUES ('e5a84729-6251-4b2b-b62e-ffab8a1eebac',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/de1830e737620f1eb9eb0b210b502b50.jpg',
 'ca4550c7-0ddb-44c2-bda7-aa32bc066a99',
 'ねこかわいいねこ〜',
+'url',
 '2020-02-22 10:10:12+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('fa55a7b6-9be8-4bcb-b4a8-6a396e425fab', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('fa55a7b6-9be8-4bcb-b4a8-6a396e425fab', 'fa55a7b6-9be8-4bcb-b4a8-6a396e425fab', 
 'mrypq2',
 'mrypq2',
 'https://www.koneko-breeder.com/cat1906-02067.html',
@@ -137,10 +143,11 @@ VALUES ('fa55a7b6-9be8-4bcb-b4a8-6a396e425fab',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/cat_img_1_326e49a33ed5.jpg',
 'ca4550c7-0ddb-44c2-bda7-aa32bc066a99',
 'ねこかわいい',
+'url',
 '2020-02-22 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('ab917ee9-bf28-41ff-b914-550728159fae', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('ab917ee9-bf28-41ff-b914-550728159fae', 'ab917ee9-bf28-41ff-b914-550728159fae', 
 'mrypq',
 'mrypq',
 'https://automaton-media.com/articles/newsjp/20190501-91106/',
@@ -148,10 +155,11 @@ VALUES ('ab917ee9-bf28-41ff-b914-550728159fae',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/20190501-91106-001.jpg',
 '6a8a04cb-bd3b-4606-b88c-593dc4e51d63',
 'かわいい！！！！！！！！！！！！！',
+'url',
 '2020-01-02 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('d7f80bcf-84f0-4560-a237-06c392e0b140', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('d7f80bcf-84f0-4560-a237-06c392e0b140', 'd7f80bcf-84f0-4560-a237-06c392e0b140', 
 'mrypq',
 'mrypq',
 'http://lolyarou.net/archives/1346',
@@ -159,10 +167,11 @@ VALUES ('d7f80bcf-84f0-4560-a237-06c392e0b140',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/2eaaf8b0ae33f1b2.jpg',
 '6a8a04cb-bd3b-4606-b88c-593dc4e51d63',
 'かわいい！！！！！！！！！！！！！',
+'url',
 '2020-02-02 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('dfa9eecf-4614-4679-a43e-33aee806fd24', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('dfa9eecf-4614-4679-a43e-33aee806fd24', 'dfa9eecf-4614-4679-a43e-33aee806fd24', 
 'mrypq',
 'mrypq',
 'https://photo.oscasierra.net/tdr-201604/',
@@ -170,10 +179,11 @@ VALUES ('dfa9eecf-4614-4679-a43e-33aee806fd24',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/26433173610_10a5654b94_o.jpg',
 '596e415e-f74e-46ab-b0dc-a00c70efb8f3',
 '行きたい！！！！！！！！！！！！！',
+'url',
 '2020-01-03 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('f7bd0617-aaf7-46c7-8b32-7ae7cd2192f7', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('f7bd0617-aaf7-46c7-8b32-7ae7cd2192f7', 'f7bd0617-aaf7-46c7-8b32-7ae7cd2192f7', 
 'mrypq',
 'mrypq',
 'https://www.jalan.net/news/article/293711/',
@@ -181,10 +191,11 @@ VALUES ('f7bd0617-aaf7-46c7-8b32-7ae7cd2192f7',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/181030_sakasa_koyo_03.jpg',
 '596e415e-f74e-46ab-b0dc-a00c70efb8f3',
 '行きたい！！！！！！！！！！！！！',
+'url',
 '2020-01-03 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('279fc672-dd59-4b80-bbbd-9d44e2a91d53', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('279fc672-dd59-4b80-bbbd-9d44e2a91d53', '279fc672-dd59-4b80-bbbd-9d44e2a91d53', 
 'mrypq',
 'mrypq',
 'https://www.miyajima.or.jp/history/history.html',
@@ -192,10 +203,11 @@ VALUES ('279fc672-dd59-4b80-bbbd-9d44e2a91d53',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/img_history.jpg',
 '596e415e-f74e-46ab-b0dc-a00c70efb8f3',
 '行きたい！！！！！！！！！！！！！',
+'url',
 '2020-01-04 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('297dca85-53fd-4e56-b023-c5bc456b9a39', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('297dca85-53fd-4e56-b023-c5bc456b9a39', '297dca85-53fd-4e56-b023-c5bc456b9a39', 
 'mrypq',
 'mrypq',
 'https://resoco.jp/4371',
@@ -203,10 +215,11 @@ VALUES ('297dca85-53fd-4e56-b023-c5bc456b9a39',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/dobai_AdobeStock_211353756.jpeg',
 '596e415e-f74e-46ab-b0dc-a00c70efb8f3',
 '行きたい！！！！！！！！！！！！！',
+'url',
 '2020-01-05 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('c126d948-7e48-489f-a51e-c7b21a63b418', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('c126d948-7e48-489f-a51e-c7b21a63b418', 'c126d948-7e48-489f-a51e-c7b21a63b418', 
 'mrypq',
 'mrypq',
 'http://www.niigata-sushi.com/',
@@ -214,10 +227,11 @@ VALUES ('c126d948-7e48-489f-a51e-c7b21a63b418',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/pic_slider_02.png',
 'ab339fe0-c32c-46e8-87c1-befcfee42d28',
 '食べたい！！！！！！！！！！！！！',
+'url',
 '2020-01-06 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('f1cfa29e-036c-4b3b-ada9-998e659ae36d', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('f1cfa29e-036c-4b3b-ada9-998e659ae36d', 'f1cfa29e-036c-4b3b-ada9-998e659ae36d', 
 'mrypq',
 'mrypq',
 'http://net.keizaikai.co.jp/archives/41822',
@@ -225,10 +239,11 @@ VALUES ('f1cfa29e-036c-4b3b-ada9-998e659ae36d',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/06608_l.jpg',
 'ab339fe0-c32c-46e8-87c1-befcfee42d28',
 '食べたい！！！！！！！！！！！！！',
+'url',
 '2020-01-07 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('70f89f0d-290d-4090-9401-01f4888758dc', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('70f89f0d-290d-4090-9401-01f4888758dc', '70f89f0d-290d-4090-9401-01f4888758dc', 
 'mrypq',
 'mrypq',
 'https://otonano-shumatsu.com/articles/5037',
@@ -236,10 +251,11 @@ VALUES ('70f89f0d-290d-4090-9401-01f4888758dc',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/6b5570665c5856bfca57d831d14ef516.jpeg',
 'ab339fe0-c32c-46e8-87c1-befcfee42d28',
 '食べたい！！！！！！！！！！！！！',
+'url',
 '2020-03-07 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('ccefdd93-d6bd-4a17-a10c-f0f09b17979b', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('ccefdd93-d6bd-4a17-a10c-f0f09b17979b', 'ccefdd93-d6bd-4a17-a10c-f0f09b17979b', 
 'mrypq',
 'mrypq',
 'https://www.jalan.net/news/article/303446/',
@@ -247,10 +263,11 @@ VALUES ('ccefdd93-d6bd-4a17-a10c-f0f09b17979b',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/20181210_osaka_gurume_19-480x320.jpg',
 'ab339fe0-c32c-46e8-87c1-befcfee42d28',
 '食べたい！！！！！！！！！！！！！',
+'url',
 '2020-02-07 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('993abdff-7c75-43fb-9238-a8fd13bffd78', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('993abdff-7c75-43fb-9238-a8fd13bffd78', '993abdff-7c75-43fb-9238-a8fd13bffd78', 
 'mrypq',
 'mrypq',
 'https://art-of-clarity.livejournal.com/111276.html',
@@ -258,10 +275,11 @@ VALUES ('993abdff-7c75-43fb-9238-a8fd13bffd78',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/XnWFHADP_o.gif',
 '3b7de911-dc1b-445f-8593-47af710707b5',
 'すき！！！！！！！！！！！！！',
+'url',
 '2020-01-08 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('1a856d62-f26a-4209-ae2a-936c460dda66', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('1a856d62-f26a-4209-ae2a-936c460dda66', '1a856d62-f26a-4209-ae2a-936c460dda66', 
 'mrypq2',
 'mrypq2',
 'https://town.epark.jp/lp/m-sunshine-aquarium/',
@@ -269,10 +287,11 @@ VALUES ('1a856d62-f26a-4209-ae2a-936c460dda66',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/sunshine_aquarium.jpg',
 '9220ecec-0c44-447c-93b6-1903e3209a91',
 'きて！！！！！！！！！！！！！',
+'url',
 '2020-01-09 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at) 
-VALUES ('da16fe8a-5224-4891-8afb-bab884f7aa24', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('da16fe8a-5224-4891-8afb-bab884f7aa24', 'da16fe8a-5224-4891-8afb-bab884f7aa24', 
 'mrypq',
 'mrypq',
 'https://www.pakutaso.com/20160346074post-7251.html',
@@ -280,10 +299,11 @@ VALUES ('da16fe8a-5224-4891-8afb-bab884f7aa24',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/MIYA16021200DSC_1905_TP_V4.jpg',
 '596e415e-f74e-46ab-b0dc-a00c70efb8f3',
 '行きたい！！！！！！！！！！！！！',
+'url',
 '2020-01-10 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at)  
-VALUES ('81e646da-b3dc-4380-aa63-ac58b74b1689', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('81e646da-b3dc-4380-aa63-ac58b74b1689', '81e646da-b3dc-4380-aa63-ac58b74b1689', 
 'mrypq2',
 'mrypq2',
 'https://twitter.com/konicaminoltamt',
@@ -291,10 +311,11 @@ VALUES ('81e646da-b3dc-4380-aa63-ac58b74b1689',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/EZoZKkBUMAARw9Z.jpg',
 '9220ecec-0c44-447c-93b6-1903e3209a91',
 'きて！！！！！！！！！！！！！',
+'url',
 '2020-01-11 10:10:10+09');
 
-INSERT INTO pin (id, user_id, original_user_id, url, title, image_url, board_id, description, created_at)  
-VALUES ('fe3ead68-eeea-49a7-8b1b-da6184c93390', 
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('fe3ead68-eeea-49a7-8b1b-da6184c93390', 'fe3ead68-eeea-49a7-8b1b-da6184c93390', 
 'mrypq2',
 'mrypq2',
 'https://www.mystays.com/attractions-ikebukuro-tokyo-japan/',
@@ -302,6 +323,7 @@ VALUES ('fe3ead68-eeea-49a7-8b1b-da6184c93390',
 'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/02.jpg',
 '9220ecec-0c44-447c-93b6-1903e3209a91',
 'きて！！！！！！！！！！！！！',
+'url',
 '2020-01-12 10:10:10+09');
 
 -- ----------- token -----------
