@@ -2,7 +2,6 @@ package db
 
 import (
 	"database/sql"
-	"errors"
 	"time"
 
 	uuid "github.com/satori/go.uuid"
@@ -18,6 +17,11 @@ type Pin struct {
 	UploadType  string
 	BoardID     uuid.UUID
 	CreatedAt   *time.Time
+}
+
+type SavePin struct {
+	PinID   uuid.UUID
+	BoardID uuid.UUID
 }
 
 func (data SQLDataStorage) DiscoverPins(limit int, offset int) ([]*Pin, error) {
@@ -162,7 +166,7 @@ func (data SQLDataStorage) GetPin(pinID uuid.UUID, userID string) (*Pin, error) 
 		}
 	}
 	if pin == nil {
-		return nil, errors.New("IdNotFound")
+		return nil, IDNotFoundErr
 	}
 
 	if err = rows.Err(); err != nil {
@@ -193,12 +197,12 @@ func pinFromRows(rows *sql.Rows) (*Pin, error) {
 
 func (data SQLDataStorage) StorePin(pin *Pin) error {
 
-	var query1 = `
+	var queryPin = `
 		INSERT INTO pin (user_id, url, title, image_url, description, upload_type, created_at) 
 		VALUES ($1, $2, $3, $4, $5, $6, $7)
 		RETURNING id
 		`
-	var arguments1 = []interface{}{
+	var argumentsPin = []interface{}{
 		pin.UserID,
 		pin.URL,
 		pin.Title,
@@ -209,25 +213,46 @@ func (data SQLDataStorage) StorePin(pin *Pin) error {
 	}
 
 	err := data.DB.QueryRow(
-		query1,
-		arguments1...,
+		queryPin,
+		argumentsPin...,
 	).Scan(&pin.ID)
 	if err != nil {
 		return err
 	}
 
-	var query2 = `
+	var queryPinBoard = `
 		INSERT INTO pin_board (pin_id, board_id) 
 		VALUES ($1, $2)
 		`
-	var arguments2 = []interface{}{
+	var argumentsPinBoard = []interface{}{
 		pin.ID,
 		pin.BoardID,
 	}
 
 	_, err = data.DB.Exec(
-		query2,
-		arguments2...,
+		queryPinBoard,
+		argumentsPinBoard...,
+	)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func (data SQLDataStorage) SavePin(pin *SavePin) error {
+
+	var query = `
+		INSERT INTO pin_board (pin_id, board_id) 
+		VALUES ($1, $2)
+		`
+	var arguments = []interface{}{
+		pin.PinID,
+		pin.BoardID,
+	}
+	_, err := data.DB.Exec(
+		query,
+		arguments...,
 	)
 	if err != nil {
 		return err

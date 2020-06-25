@@ -12,6 +12,7 @@ type DataStorage interface {
 	DiscoverPins(limit int, offset int) ([]*Pin, error)
 	GetPins(userID string, boardID uuid.UUID, limit int, offset int) ([]*Pin, error)
 	StorePin(pin *Pin) error
+	SavePin(pin *SavePin) error
 	GetBoard(boardID uuid.UUID) (*Board, error)
 	GetBoards(userId string, topicId uuid.UUID, limit int, offset int) ([]*Board, error)
 	StoreBoard(board *Board) error

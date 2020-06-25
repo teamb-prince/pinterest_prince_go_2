@@ -1,9 +1,12 @@
 package handlers
 
 import (
+	"errors"
 	"fmt"
 	"net/http"
 
+	uuid "github.com/satori/go.uuid"
+	"github.com/teamb-prince/pinterest_prince_go/models/db"
 	"golang.org/x/crypto/bcrypt"
 )
 
@@ -16,6 +19,9 @@ const (
 	contentType = "Content-Type"
 	jsonContent = "application/json"
 )
+
+var ForbiddenBoardErr = errors.New("Forbidden Board")
+var AlreadyExistErr = errors.New("Pin Already Exist")
 
 func RequestSummary(r *http.Request) string {
 	return fmt.Sprintf("%v %v", r.Method, r.URL)
@@ -63,4 +69,26 @@ func HttpErrorHandler(statusCode int, w http.ResponseWriter, r *http.Request) {
 func HashPassword(password string) (string, error) {
 	hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
 	return string(hashedPassword), err
+}
+
+func CheckBoardOwner(data db.DataStorage, userID string, boardID uuid.UUID) error {
+	board, err := data.GetBoard(boardID)
+	if err != nil {
+		return err
+	}
+
+	if board.UserID != userID {
+		return ForbiddenBoardErr
+	}
+	return nil
+}
+
+func CheckPinExist(data db.DataStorage, pinID uuid.UUID, userID string) error {
+	_, err := data.GetPin(pinID, userID)
+	if err == db.IDNotFoundErr {
+		return nil
+	} else if err == nil {
+		return AlreadyExistErr
+	}
+	return err
 }

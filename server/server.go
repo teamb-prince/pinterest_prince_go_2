@@ -38,6 +38,8 @@ func attachHandlers(mux *mux.Router, data db.DataStorage) {
 	mux.HandleFunc("/pins/{id}", handlers.ServePin(data)).Methods(http.MethodGet)
 
 	mux.HandleFunc("/pins", handlers.ServePins(data)).Methods(http.MethodGet)
+	mux.HandleFunc("/pins/save", handlers.SavePin(data)).Methods(http.MethodPost)
+
 	mux.HandleFunc("/discover", handlers.DiscoverPins(data)).Methods(http.MethodGet)
 
 	mux.HandleFunc("/boards/{id}", handlers.ServeBoard(data)).Methods(http.MethodGet)
