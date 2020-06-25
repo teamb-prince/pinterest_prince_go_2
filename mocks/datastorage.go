@@ -32,6 +32,10 @@ func (db SQLDataStoreMock) GetPin(pinID uuid.UUID, userID string) (*db.Pin, erro
 	return db.ExpectedPin, db.ExpectedError
 }
 
+func (db SQLDataStoreMock) SavePin(pin *db.SavePin) error {
+	return db.ExpectedError
+}
+
 func (db SQLDataStoreMock) StorePin(pin *db.Pin) error {
 	return db.ExpectedError
 }

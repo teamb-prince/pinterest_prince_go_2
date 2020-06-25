@@ -31,6 +31,12 @@ type PinRequest struct {
 	Description    string    `json:"description"`
 }
 
+type SavePinRequest struct {
+	ID      uuid.UUID `json:"id"`
+	UserID  string    `json:"user_id"`
+	BoardID uuid.UUID `json:"board_id"`
+}
+
 func NewPin(pin *db.Pin) *Pin {
 
 	p := &Pin{

@@ -273,3 +273,57 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 		}
 	}
 }
+
+func SavePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		requestSavePin := &view.SavePinRequest{}
+
+		if err := json.NewDecoder(r.Body).Decode(requestSavePin); err != nil {
+			logs.Error("Request: %s, unable to parse content: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
+		pinID := requestSavePin.ID
+		userID := requestSavePin.UserID
+		boardID := requestSavePin.BoardID
+
+		err := CheckPinExist(data, pinID, userID)
+		if err != nil {
+			if err == AlreadyExistErr {
+				logs.Error("Request: %s, pin already exists: %v", RequestSummary(r), err)
+				Forbidden(w, r)
+				return
+			} else {
+				logs.Error("Request: %s, : internal server error %v", RequestSummary(r), err)
+				InternalServerError(w, r)
+				return
+			}
+		}
+
+		err = CheckBoardOwner(data, userID, boardID)
+		if err == db.IDNotFoundErr {
+			logs.Error("Request: %s, board not found: %v", RequestSummary(r), err)
+			NotFound(w, r)
+			return
+		} else if err == ForbiddenBoardErr {
+			logs.Error("Request: %s, forbidden board: %v", RequestSummary(r), err)
+			Forbidden(w, r)
+			return
+		} else if err != nil {
+			logs.Error("Request: %s, unable to check board owner: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+		savePin := &db.SavePin{PinID: pinID, BoardID: boardID}
+
+		if err := data.SavePin(savePin); err != nil {
+			logs.Error("Request: %s, unable to store pin: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+	}
+}
