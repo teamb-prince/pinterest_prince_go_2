@@ -13,7 +13,6 @@ func pin1() *db.Pin {
 		URL:         "URL",
 		Title:       "Title",
 		ImageURL:    "ImageURL",
-		BoardID:     uuid.NewV4(),
 		Description: "explaining something",
 	}
 }

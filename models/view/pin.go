@@ -35,13 +35,13 @@ func NewPin(pin *db.Pin) *Pin {
 
 	p := &Pin{
 		pin.ID,
-		pin.OriginalID,
+		uuid.Nil, //pin.OriginalID,
 		pin.UserID,
-		pin.OriginalUserID,
+		"", //pin.OriginalUserID,
 		pin.URL,
 		pin.Title,
 		pin.ImageURL,
-		pin.BoardID,
+		uuid.Nil, //pin.BoardID,
 		pin.Description,
 		pin.UploadType,
 		pin.CreatedAt,

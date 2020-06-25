@@ -28,7 +28,7 @@ func (db SQLDataStoreMock) GetPins(userID string, boardID uuid.UUID, limit int, 
 	return db.ExpectedPins, db.ExpectedError
 }
 
-func (db SQLDataStoreMock) GetPin(pinID uuid.UUID) (*db.Pin, error) {
+func (db SQLDataStoreMock) GetPin(pinID uuid.UUID, userID string) (*db.Pin, error) {
 	return db.ExpectedPin, db.ExpectedError
 }
 
