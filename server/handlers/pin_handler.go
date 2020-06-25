@@ -78,10 +78,14 @@ func DiscoverPins(data db.DataStorage) func(http.ResponseWriter, *http.Request) 
 
 func ServePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
+
 		if r.Method != "GET" {
 			logs.Warn("405 Method Not Allowed")
 			w.WriteHeader(http.StatusMethodNotAllowed)
 		}
+
+		qValues := r.URL.Query()
+		userID := qValues.Get("user_id")
 
 		vars := mux.Vars(r)
 		uuidStr := vars["id"]
@@ -93,7 +97,7 @@ func ServePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
-		pin, err := data.GetPin(uuid)
+		pin, err := data.GetPin(uuid, userID)
 		if err != nil {
 
 			if err.Error() == "IdNotFound" {
@@ -153,17 +157,15 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 		uploadType := "url"
 		now := time.Now()
 		storedPin := &db.Pin{
-			ID:             uuid.Nil,
-			OriginalID:     uuid.Nil,
-			UserID:         requestPin.UserID,
-			OriginalUserID: requestPin.OriginalUserID,
-			URL:            requestPin.URL,
-			Title:          requestPin.Title,
-			ImageURL:       requestPin.ImageURL,
-			BoardID:        requestPin.BoardID,
-			Description:    requestPin.Description,
-			UploadType:     uploadType,
-			CreatedAt:      &now,
+			ID:          uuid.Nil,
+			UserID:      requestPin.UserID,
+			URL:         requestPin.URL,
+			Title:       requestPin.Title,
+			ImageURL:    requestPin.ImageURL,
+			Description: requestPin.Description,
+			UploadType:  uploadType,
+			BoardID:     requestPin.BoardID,
+			CreatedAt:   &now,
 		}
 
 		if err := data.StorePin(storedPin); err != nil {
@@ -241,17 +243,14 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 		uploadType := "local"
 		now := time.Now()
 		storedPin := &db.Pin{
-			ID:             uuid.Nil,
-			OriginalID:     uuid.Nil,
-			UserID:         requestPin.UserID,
-			OriginalUserID: requestPin.OriginalUserID,
-			URL:            requestPin.URL,
-			Title:          requestPin.Title,
-			ImageURL:       s3Url,
-			BoardID:        requestPin.BoardID,
-			Description:    requestPin.Description,
-			UploadType:     uploadType,
-			CreatedAt:      &now,
+			ID:          uuid.Nil,
+			UserID:      requestPin.UserID,
+			URL:         requestPin.URL,
+			Title:       requestPin.Title,
+			ImageURL:    s3Url,
+			Description: requestPin.Description,
+			UploadType:  uploadType,
+			CreatedAt:   &now,
 		}
 
 		if err := data.StorePin(storedPin); err != nil {
