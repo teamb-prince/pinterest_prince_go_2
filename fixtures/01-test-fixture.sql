@@ -84,7 +84,6 @@ VALUES ('ca1fd1bb-7cae-443d-bdb2-25ad4c50790c', 'ca1fd1bb-7cae-443d-bdb2-25ad4c5
 'url',
 '2020-02-22 12:30:22+09');
 
-
 INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
 VALUES ('7cbffef8-1c4a-4faa-9953-821177b5bddf', '7cbffef8-1c4a-4faa-9953-821177b5bddf', 
 'mrypq',
@@ -325,6 +324,30 @@ VALUES ('fe3ead68-eeea-49a7-8b1b-da6184c93390', 'fe3ead68-eeea-49a7-8b1b-da6184c
 'きて！！！！！！！！！！！！！',
 'url',
 '2020-01-12 10:10:10+09');
+
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('cd0cdb20-23ec-4ab5-b533-ffc875eb0ff5', 'cd0cdb20-23ec-4ab5-b533-ffc875eb0ff5', 
+'mrypq',
+'mrypq',
+'',
+'イレリア＆タロン　新スキン',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/DmSL1V6UwAABph-.jpg',
+'6a8a04cb-bd3b-4606-b88c-593dc4e51d63',
+'パッチ8.17で追加の新スキン　かわいい❤︎',
+'local',
+'2020-01-20 20:20:20+09');
+
+INSERT INTO pin (id, original_id, user_id, original_user_id, url, title, image_url, board_id, description, upload_type, created_at)  
+VALUES ('cd0cdb20-23ec-4ab5-b533-ffc875eb0ff5', 'cd0cdb20-23ec-4ab5-b533-ffc875eb0ff5', 
+'mrypq',
+'mrypq',
+'https://www.meijioishiigyunyu.com/recipe/detail/151.html',
+'バジルチーズフォンデュ',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/main.jpg',
+'ab339fe0-c32c-46e8-87c1-befcfee42d28',
+'',
+'local',
+'2020-01-20 20:20:20+09');
 
 -- ----------- token -----------
 -- [TODO] 確認用トークン ずっと使える いるかな？
