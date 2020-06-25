@@ -9,6 +9,7 @@ import (
 
 type Pin struct {
 	ID             uuid.UUID  `json:"id"`
+	OriginalID     uuid.UUID  `json:"original_id"`
 	UserID         string     `json:"user_id"`
 	OriginalUserID string     `json:"original_user_id"`
 	URL            string     `json:"url"`
@@ -16,6 +17,7 @@ type Pin struct {
 	ImageURL       string     `json:"image_url"`
 	BoardID        uuid.UUID  `json:"board_id"`
 	Description    string     `json:"description"`
+	UploadType     string     `json:"upload_type"`
 	CreatedAt      *time.Time `json:"created_at"`
 }
 
@@ -33,6 +35,7 @@ func NewPin(pin *db.Pin) *Pin {
 
 	p := &Pin{
 		pin.ID,
+		pin.OriginalID,
 		pin.UserID,
 		pin.OriginalUserID,
 		pin.URL,
@@ -40,6 +43,7 @@ func NewPin(pin *db.Pin) *Pin {
 		pin.ImageURL,
 		pin.BoardID,
 		pin.Description,
+		pin.UploadType,
 		pin.CreatedAt,
 	}
 
