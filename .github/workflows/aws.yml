@@ -1,5 +1,4 @@
-name: Deploy to EC2  
-# masterにpushされた時にjobを実行する
+
 on:
   push:
     branches: [ develop ]
