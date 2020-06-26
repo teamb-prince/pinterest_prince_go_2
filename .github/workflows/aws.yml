@@ -20,4 +20,4 @@ jobs:
       - id: step2
         run: chmod 600 secret_key
       - id: step3
-        run: ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/pinterest_prince_go_2 && git pull origin master"
+        run: ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/pinterest_prince_go_2 && git pull origin develop"
