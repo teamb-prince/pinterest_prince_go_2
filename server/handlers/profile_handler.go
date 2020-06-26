@@ -62,6 +62,7 @@ func ServeProfileBoards(data db.DataStorage) func(http.ResponseWriter, *http.Req
 			BadRequest(w, r)
 			return
 		}
+
 		boards, err := data.GetBoards(userID, defaltTopicID, defaltLimit, defaltOffset)
 		if err != nil {
 			logs.Error("Request: %s, Internal Server Error (DB ERROR): %v", RequestSummary(r), err)
