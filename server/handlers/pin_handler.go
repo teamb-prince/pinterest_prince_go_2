@@ -11,6 +11,7 @@ import (
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"
 	"github.com/teamb-prince/pinterest_prince_go/api/awsmanager"
+	"github.com/teamb-prince/pinterest_prince_go/auth"
 	"github.com/teamb-prince/pinterest_prince_go/logs"
 	"github.com/teamb-prince/pinterest_prince_go/models/db"
 	"github.com/teamb-prince/pinterest_prince_go/models/view"
@@ -77,6 +78,7 @@ func DiscoverPins(data db.DataStorage) func(http.ResponseWriter, *http.Request) 
 }
 
 func ServePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
+
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		if r.Method != "GET" {
@@ -132,6 +134,15 @@ func ServePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
+		tokenHeader := r.Header.Get("token")
+
+		userID, err := auth.CheckTokenUser(tokenHeader)
+		if err != nil {
+			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
 		requestPin := &view.PinRequest{}
 
 		if err := json.NewDecoder(r.Body).Decode(requestPin); err != nil {
@@ -140,6 +151,23 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 			return
 		}
 		url := requestPin.URL
+
+		boardID := requestPin.BoardID
+
+		err = CheckBoardOwner(data, userID, boardID)
+		if err == db.IDNotFoundErr {
+			logs.Error("Request: %s, board not found: %v", RequestSummary(r), err)
+			NotFound(w, r)
+			return
+		} else if err == ForbiddenBoardErr {
+			logs.Error("Request: %s, forbidden board: %v", RequestSummary(r), err)
+			Forbidden(w, r)
+			return
+		} else if err != nil {
+			logs.Error("Request: %s, unable to check board owner: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
 
 		res, err := http.Get(url)
 		if err != nil {
@@ -158,13 +186,13 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 		now := time.Now()
 		storedPin := &db.Pin{
 			ID:          uuid.Nil,
-			UserID:      requestPin.UserID,
+			UserID:      userID,
 			URL:         requestPin.URL,
 			Title:       requestPin.Title,
 			ImageURL:    requestPin.ImageURL,
 			Description: requestPin.Description,
 			UploadType:  uploadType,
-			BoardID:     requestPin.BoardID,
+			BoardID:     boardID,
 			CreatedAt:   &now,
 		}
 
@@ -192,6 +220,43 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
+		tokenHeader := r.Header.Get("token")
+
+		userID, err := auth.CheckTokenUser(tokenHeader)
+		if err != nil {
+			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
+		requestPin := &view.PinRequest{}
+
+		reqJson := r.FormValue("json")
+
+		if err := json.NewDecoder(strings.NewReader(reqJson)).Decode(requestPin); err != nil {
+			logs.Error("Request: %s, unable to parse content: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+		url := requestPin.URL
+
+		boardID := requestPin.BoardID
+
+		err = CheckBoardOwner(data, userID, boardID)
+		if err == db.IDNotFoundErr {
+			logs.Error("Request: %s, board not found: %v", RequestSummary(r), err)
+			NotFound(w, r)
+			return
+		} else if err == ForbiddenBoardErr {
+			logs.Error("Request: %s, forbidden board: %v", RequestSummary(r), err)
+			Forbidden(w, r)
+			return
+		} else if err != nil {
+			logs.Error("Request: %s, unable to check board owner: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
 		file, _, err := r.FormFile("image")
 		if err != nil {
 			logs.Error("Request: %s, unable to FormFile (image): %v", RequestSummary(r), err)
@@ -214,17 +279,6 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 			return
 		}
 
-		requestPin := &view.PinRequest{}
-
-		reqJson := r.FormValue("json")
-
-		if err := json.NewDecoder(strings.NewReader(reqJson)).Decode(requestPin); err != nil {
-			logs.Error("Request: %s, unable to parse content: %v", RequestSummary(r), err)
-			BadRequest(w, r)
-			return
-		}
-
-		url := requestPin.URL
 		if url != "" {
 			res, err := http.Get(url)
 			if err != nil {
@@ -244,13 +298,13 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 		now := time.Now()
 		storedPin := &db.Pin{
 			ID:          uuid.Nil,
-			UserID:      requestPin.UserID,
-			URL:         requestPin.URL,
+			UserID:      userID,
+			URL:         url,
 			Title:       requestPin.Title,
 			ImageURL:    s3Url,
 			Description: requestPin.Description,
 			UploadType:  uploadType,
-			BoardID:     requestPin.BoardID,
+			BoardID:     boardID,
 			CreatedAt:   &now,
 		}
 
@@ -278,6 +332,15 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 func SavePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
+		tokenHeader := r.Header.Get("token")
+
+		userID, err := auth.CheckTokenUser(tokenHeader)
+		if err != nil {
+			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
 		requestSavePin := &view.SavePinRequest{}
 
 		if err := json.NewDecoder(r.Body).Decode(requestSavePin); err != nil {
@@ -287,10 +350,9 @@ func SavePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 		}
 
 		pinID := requestSavePin.ID
-		userID := requestSavePin.UserID
 		boardID := requestSavePin.BoardID
 
-		err := CheckPinExist(data, pinID, userID)
+		err = CheckPinExist(data, pinID, userID)
 		if err != nil {
 			if err == AlreadyExistErr {
 				logs.Error("Request: %s, pin already exists: %v", RequestSummary(r), err)
