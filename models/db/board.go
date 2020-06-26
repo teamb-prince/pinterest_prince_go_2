@@ -8,6 +8,10 @@ import (
 	uuid "github.com/satori/go.uuid"
 )
 
+const (
+	defaltTopicStr = "8083e9df-e30e-457f-b853-2bb70fbb025b"
+)
+
 type Board struct {
 	ID          uuid.UUID
 	UserID      string
@@ -108,24 +112,36 @@ func (data SQLDataStorage) GetBoards(userID string, topicID uuid.UUID, limit int
 
 func (data SQLDataStorage) StoreBoard(board *Board) error {
 
+	defaltTopicID, err := uuid.FromString(defaltTopicStr)
+	if err != nil {
+		return err
+	}
+
+	var topicID uuid.UUID
+	if board.TopicID == uuid.Nil {
+		topicID = defaltTopicID
+	} else {
+		topicID = board.TopicID
+	}
+
 	query := `
 	INSERT INTO board (id, user_id, name, topic_id, description, created_at) 
 	VALUES ($1, $2, $3, $4, $5, $6)
-	RETURNING id
+	RETURNING id, topic_id
 	`
 	arguments := []interface{}{
 		board.ID,
 		board.UserID,
 		board.Name,
-		board.TopicID,
+		topicID,
 		board.Description,
 		board.CreatedAt,
 	}
 
-	err := data.DB.QueryRow(
+	err = data.DB.QueryRow(
 		query,
 		arguments...,
-	).Scan(&board.ID)
+	).Scan(&board.ID, &board.TopicID)
 	if err != nil {
 		return err
 	}
