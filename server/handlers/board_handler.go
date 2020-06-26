@@ -8,6 +8,7 @@ import (
 
 	"github.com/gorilla/mux"
 	uuid "github.com/satori/go.uuid"
+	"github.com/teamb-prince/pinterest_prince_go/auth"
 	"github.com/teamb-prince/pinterest_prince_go/logs"
 	"github.com/teamb-prince/pinterest_prince_go/models/db"
 	"github.com/teamb-prince/pinterest_prince_go/models/view"
@@ -102,6 +103,15 @@ func ServeBoards(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 func CreateBoard(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
+		tokenHeader := r.Header.Get("token")
+
+		userID, err := auth.CheckTokenUser(tokenHeader)
+		if err != nil {
+			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
 		requestBoard := &view.BoardRequest{}
 
 		if err := json.NewDecoder(r.Body).Decode(requestBoard); err != nil {
@@ -113,7 +123,7 @@ func CreateBoard(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 		now := time.Now()
 		storedBoard := &db.Board{
 			ID:          uuid.NewV4(),
-			UserID:      requestBoard.UserID,
+			UserID:      userID,
 			Name:        requestBoard.Name,
 			TopicID:     requestBoard.TopicID,
 			Description: requestBoard.Description,

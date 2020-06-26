@@ -17,11 +17,9 @@ type Board struct {
 }
 
 type BoardRequest struct {
-	UserID      string     `json:"user_id"`
-	Name        string     `json:"name"`
-	TopicID     uuid.UUID  `json:"topic_id"`
-	Description string     `json:"description"`
-	CreatedAt   *time.Time `json:"created_at"`
+	Name        string    `json:"name"`
+	TopicID     uuid.UUID `json:"topic_id"`
+	Description string    `json:"description"`
 }
 
 func NewBoard(board *db.Board) *Board {

@@ -20,7 +20,6 @@ type Pin struct {
 
 type PinRequest struct {
 	URL         string    `json:"url"`
-	UserID      string    `json:"user_id"`
 	ImageURL    string    `json:"image_url"`
 	Title       string    `json:"title"`
 	BoardID     uuid.UUID `json:"board_id"`
