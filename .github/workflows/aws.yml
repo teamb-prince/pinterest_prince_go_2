@@ -14,7 +14,9 @@ jobs:
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       EC2_USER: ${{ secrets.EC2_USER }}
       EC2_HOST: ${{ secrets.EC2_HOST }} 
-      run: 
-        echo "$SECRET_KEY" > secret_key
-        chmod 600 secret_key
-        ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/pinterest_prince_go_2 && git pull origin develop"
+    steps:
+      - name: step1
+        run: 
+          echo "$SECRET_KEY" > secret_key
+          chmod 600 secret_key
+          ssh -oStrictHostKeyChecking=no ${EC2_USER}@${EC2_HOST} -i secret_key "cd ~/pinterest_prince_go_2 && git pull origin develop"
