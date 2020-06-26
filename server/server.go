@@ -17,7 +17,7 @@ func Start(port int, dbConn *sql.DB) error {
 	data := db.NewSQLDataStorage(dbConn)
 	s3manager := awsmanager.NewS3Manager()
 	attachHandlers(router, data)
-	awsAttachHandlers(router, data, *s3manager)
+	middlewareAttachHandlers(router, data, *s3manager)
 
 	s := &http.Server{
 		Addr:    fmt.Sprintf(":%d", port),
@@ -71,8 +71,12 @@ func attachHandlers(mux *mux.Router, data db.DataStorage) {
 
 }
 
-func awsAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager awsmanager.S3Manager) {
+func middlewareAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager awsmanager.S3Manager) {
+
 	mux.HandleFunc("/pins/local", handlers.CreatePinLocal(data, s3manager)).Methods(http.MethodPost)
 	mux.HandleFunc("/pins/url", handlers.CreatePinURL(data, s3manager)).Methods(http.MethodPost)
-	// mux.HandleFunc("/images/resize", handlers.ResizeImage(s3manager)).Methods("POST")
+
+	mux.HandleFunc("/profile/boards", handlers.ServeProfileBoards(data)).Methods(http.MethodGet)
+	mux.HandleFunc("/profile/pins", handlers.ServeProfilePins(data)).Methods(http.MethodGet)
+
 }

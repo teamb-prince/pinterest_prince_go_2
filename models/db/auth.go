@@ -1,7 +1,19 @@
 package db
 
+import (
+	"github.com/dgrijalva/jwt-go"
+)
+
 type Token struct {
 	TokenStr string
+}
+
+type TokenClaims struct {
+	Role      string
+	UserID    string
+	CreatedAt int64
+	Expire    int64
+	jwt.StandardClaims
 }
 
 type ErrorMessage struct {

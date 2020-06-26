@@ -250,6 +250,7 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 			ImageURL:    s3Url,
 			Description: requestPin.Description,
 			UploadType:  uploadType,
+			BoardID:     requestPin.BoardID,
 			CreatedAt:   &now,
 		}
 
