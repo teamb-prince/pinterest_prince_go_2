@@ -6,7 +6,7 @@ CREATE TABLE user_account
     email TEXT NOT NULL,
     password_hash TEXT NOT NULL,
     role TEXT,
-    profile_image TEXT,
+    profile_image TEXT, 
     description TEXT,
     location TEXT,
     web TEXT,

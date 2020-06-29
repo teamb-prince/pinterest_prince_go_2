@@ -21,7 +21,7 @@ const (
 )
 
 var ForbiddenBoardErr = errors.New("Forbidden Board")
-var AlreadyExistErr = errors.New("Pin Already Exist")
+var AlreadyExistErr = errors.New("ID Already Exist")
 
 func RequestSummary(r *http.Request) string {
 	return fmt.Sprintf("%v %v", r.Method, r.URL)

@@ -12,6 +12,11 @@ import (
 	"github.com/teamb-prince/pinterest_prince_go/models/view"
 )
 
+const (
+	defaultRole         = "user"
+	defaultProfileImage = "https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/original.jpg"
+)
+
 func ServeUsers(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method != "GET" {
@@ -183,14 +188,15 @@ func CreateUser(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
-		role := "user"
 		now := time.Now()
 
 		storedUser := &db.User{
 			ID:           requestUser.ID,
+			FirstName:    requestUser.ID,
 			Email:        requestUser.Email,
 			PasswordHash: hashedPassword,
-			Role:         role,
+			Role:         defaultRole,
+			ProfileImage: defaultProfileImage,
 			CreatedAt:    &now,
 		}
 
