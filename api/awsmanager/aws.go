@@ -3,22 +3,26 @@ package awsmanager
 import (
 	"errors"
 	"fmt"
+	"io/ioutil"
 	"mime/multipart"
+	"net/http"
 	"os"
 
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/aws/session"
+	"github.com/aws/aws-sdk-go/service/rekognition"
 	"github.com/aws/aws-sdk-go/service/s3"
 	"github.com/aws/aws-sdk-go/service/s3/s3manager"
 	"github.com/joho/godotenv"
 	"github.com/teamb-prince/pinterest_prince_go/logs"
 )
 
-type S3Manager struct {
+type AWSManager struct {
 	Uploader        *s3manager.Uploader
 	Downloader      *s3manager.Downloader
+	Rekognition     *rekognition.Rekognition
 	Bucket          string
 	AccessKeyID     string
 	SecretAccessKey string
@@ -26,7 +30,7 @@ type S3Manager struct {
 	Keys            string
 }
 
-func (s *S3Manager) Init() (err error) {
+func (s *AWSManager) Init() (err error) {
 
 	err = godotenv.Load("./aws.env")
 	if err != nil {
@@ -54,11 +58,12 @@ func (s *S3Manager) Init() (err error) {
 
 	s.Uploader = s3manager.NewUploader(sess)
 	s.Downloader = s3manager.NewDownloader(sess)
+	s.Rekognition = rekognition.New(sess, aws.NewConfig().WithRegion(s.Region))
 
 	return
 }
 
-func (s *S3Manager) Upload(file multipart.File, fileName string, extension string) (url string, err error) {
+func (s *AWSManager) Upload(file multipart.File, fileName string, extension string) (url string, err error) {
 
 	if fileName == "" {
 		return "", errors.New("fileName is required")
@@ -94,7 +99,7 @@ func (s *S3Manager) Upload(file multipart.File, fileName string, extension strin
 	return result.Location, nil
 }
 
-func (s *S3Manager) Download(fileName string) ([]byte, error) {
+func (s *AWSManager) Download(fileName string) ([]byte, error) {
 	buffer := aws.NewWriteAtBuffer([]byte{})
 
 	_, err := s.Downloader.Download(buffer, &s3.GetObjectInput{
@@ -112,8 +117,49 @@ func (s *S3Manager) Download(fileName string) ([]byte, error) {
 
 }
 
-func NewS3Manager() *S3Manager {
-	var s3 S3Manager
-	_ = s3.Init()
-	return &s3
+func NewAWSManager() *AWSManager {
+	var am AWSManager
+	_ = am.Init()
+	return &am
+}
+
+func (am *AWSManager) Detect(url string) ([]string, error) {
+
+	// 画像ファイルを取得
+	image, err := http.Get(url)
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil, err
+	}
+	defer image.Body.Close()
+
+	// 画像ファイルのデータを全て読み込み
+	bytes, err := ioutil.ReadAll(image.Body)
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil, err
+	}
+
+	var maxLabels int64 = 3
+
+	params := &rekognition.DetectLabelsInput{
+		Image: &rekognition.Image{
+			Bytes: bytes,
+		},
+		MaxLabels: &maxLabels,
+	}
+
+	output, err := am.Rekognition.DetectLabels(params)
+	if err != nil {
+		fmt.Println(err.Error())
+		return nil, err
+	}
+
+	var labels []string
+
+	for _, label := range output.Labels {
+		labels = append(labels, *label.Name)
+		//fmt.Printf("ラベル名:%s 信頼度:%f\n", *label.Name, *label.Confidence)
+	}
+	return labels, nil
 }

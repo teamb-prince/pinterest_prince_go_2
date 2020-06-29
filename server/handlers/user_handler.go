@@ -194,6 +194,19 @@ func CreateUser(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 			CreatedAt:    &now,
 		}
 
+		err = CheckUserExist(data, requestUser.ID)
+		if err != nil {
+			if err == AlreadyExistErr {
+				logs.Error("Request: %s, user id already exists: %v", RequestSummary(r), err)
+				Forbidden(w, r)
+				return
+			} else {
+				logs.Error("Request: %s, : internal server error %v", RequestSummary(r), err)
+				InternalServerError(w, r)
+				return
+			}
+		}
+
 		if err := data.StoreUser(storedUser); err != nil {
 			logs.Error("Request: %s, unable to store user: %v", RequestSummary(r), err)
 			InternalServerError(w, r)

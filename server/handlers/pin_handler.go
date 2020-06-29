@@ -131,7 +131,7 @@ func ServePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	}
 }
 
-func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.ResponseWriter, *http.Request) {
+func CreatePinURL(data db.DataStorage, s3 awsmanager.AWSManager) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		tokenHeader := r.Header.Get("token")
@@ -182,6 +182,16 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 		}
 		defer res.Body.Close()
 
+		var labels []string
+
+		labels, err = s3.Detect(requestPin.ImageURL)
+		if err != nil {
+			logs.Error("Request: %s, unable to detect images: %v", RequestSummary(r), err)
+			return
+		}
+
+		label := labels[0]
+
 		uploadType := "url"
 		now := time.Now()
 		storedPin := &db.Pin{
@@ -193,6 +203,7 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 			Description: requestPin.Description,
 			UploadType:  uploadType,
 			BoardID:     boardID,
+			Label:       label,
 			CreatedAt:   &now,
 		}
 
@@ -217,7 +228,7 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Respon
 	}
 }
 
-func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.ResponseWriter, *http.Request) {
+func CreatePinLocal(data db.DataStorage, s3 awsmanager.AWSManager) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
 		tokenHeader := r.Header.Get("token")
@@ -294,6 +305,18 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 			defer res.Body.Close()
 		}
 
+		var labels []string
+
+		if format == "png" || format == "jpeg" {
+			labels, err = s3.Detect(s3Url)
+			if err != nil {
+				logs.Error("Request: %s, unable to detect images: %v", RequestSummary(r), err)
+				return
+			}
+		}
+
+		label := labels[0]
+
 		uploadType := "local"
 		now := time.Now()
 		storedPin := &db.Pin{
@@ -305,6 +328,7 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.S3Manager) func(http.Resp
 			Description: requestPin.Description,
 			UploadType:  uploadType,
 			BoardID:     boardID,
+			Label:       label,
 			CreatedAt:   &now,
 		}
 

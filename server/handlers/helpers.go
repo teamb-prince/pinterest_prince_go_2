@@ -92,3 +92,13 @@ func CheckPinExist(data db.DataStorage, pinID uuid.UUID, userID string) error {
 	}
 	return err
 }
+
+func CheckUserExist(data db.DataStorage, userID string) error {
+	_, err := data.GetUser(userID)
+	if err == db.IDNotFoundErr {
+		return nil
+	} else if err == nil {
+		return AlreadyExistErr
+	}
+	return err
+}

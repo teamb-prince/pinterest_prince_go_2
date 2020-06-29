@@ -7,5 +7,6 @@ CREATE TABLE pin
     image_url     TEXT,
     description TEXT,
     upload_type	TEXT,
+    label TEXT,
     created_at TIMESTAMP WITHOUT TIME ZONE
 )

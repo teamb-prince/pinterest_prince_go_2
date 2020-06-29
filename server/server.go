@@ -15,7 +15,7 @@ import (
 func Start(port int, dbConn *sql.DB) error {
 	router := mux.NewRouter()
 	data := db.NewSQLDataStorage(dbConn)
-	s3manager := awsmanager.NewS3Manager()
+	s3manager := awsmanager.NewAWSManager()
 	attachHandlers(router, data)
 	middlewareAttachHandlers(router, data, *s3manager)
 
@@ -71,7 +71,7 @@ func attachHandlers(mux *mux.Router, data db.DataStorage) {
 
 }
 
-func middlewareAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager awsmanager.S3Manager) {
+func middlewareAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager awsmanager.AWSManager) {
 
 	mux.HandleFunc("/pins/local", handlers.CreatePinLocal(data, s3manager)).Methods(http.MethodPost)
 	mux.HandleFunc("/pins/url", handlers.CreatePinURL(data, s3manager)).Methods(http.MethodPost)

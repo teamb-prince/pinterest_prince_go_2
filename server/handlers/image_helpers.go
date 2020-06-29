@@ -87,7 +87,7 @@ func GetImages(baseURL string, res *http.Response) ([]string, error) {
 	return result, nil
 }
 
-func UploadImage(s3 *awsmanager.S3Manager, file multipart.File, format string) (string, error) {
+func UploadImage(s3 *awsmanager.AWSManager, file multipart.File, format string) (string, error) {
 
 	filename := uuid.NewV4().String()
 
