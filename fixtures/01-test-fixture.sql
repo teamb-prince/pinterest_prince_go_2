@@ -447,3 +447,331 @@ INSERT INTO pin_board (pin_id, board_id)
 VALUES (
  'ebcf05e5-a731-478d-9cd8-96e157f4b36d' , 'ab339fe0-c32c-46e8-87c1-befcfee42d28'
 );
+
+
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('92395f73-6328-4d9d-9a59-78bbec6d7a40',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/8ca668c6-f6ca-4e69-ab35-053675d45fcc',
+'hogehoge',
+'url', 'Pet',
+'2020-06-29 15:40:19+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('58dadd2e-69d0-450c-9120-c051a71f8874',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/49a967b9-8aad-40d2-b444-ebfed7432a1a',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:19+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('e1561e0e-9f67-413e-9773-44796feb98c6',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/899f01ca-9ebb-4093-9f75-4dbb33608234',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:19+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('39b6dcfa-7a6d-4aa9-9f18-5a56994b4041',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/4d4c27e7-4f6f-4e56-bd83-71cafcfb4767',
+'hogehoge',
+'url', 'Cat','2020-06-29 15:40:20+09');
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('c527ec17-2bf1-46b0-8de2-240bb3c4aa09',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/f85c0fbb-0b01-4b9d-98a5-fe148f9659e3',
+'hogehoge',
+'url', 'Snout',
+'2020-06-29 15:40:20+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('a9fc9f48-91a0-4dc9-92cd-4ce42d83e3a3',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/1c69c36c-5b70-4ad5-96b5-b6436d5961ab',
+'hogehoge',
+'url', 'Kitten',
+'2020-06-29 15:40:21+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('170855c1-f598-4dfc-82e5-61adf6e42612',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/70340416-9381-4144-9b25-a6b907498811',
+'hogehoge',
+'url', 'Home Decor',
+'2020-06-29 15:40:21+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('732de76c-7e9a-4a61-848b-ed6b4909b7fb',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/d235f0e5-f058-4408-a0ee-2dd0c7b49e77',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:22+09'
+);
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('26e72143-08be-4ce1-917a-c2567bfe3d33',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/463f8b17-8080-40aa-9996-fe7b9a730275',
+'hogehoge',
+'url', 'Kitten',
+'2020-06-29 15:40:22+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('b88fd88d-5918-44fc-b29c-d8e8a8e4e5dd',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/9258f8f2-0b2c-4779-b9c0-1f2bc5ee0962',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:23+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('c91d32bc-4cf4-4762-8ce5-18fff8b4a075',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/b4798fa9-dc4d-4fdf-a20d-2af4d2ea26bb',
+'hogehoge',
+'url', 'Clothing',
+'2020-06-29 15:40:23+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('8314b313-f36a-4fef-b6f3-b09f3692042a',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/13426cf1-ba3f-4a30-bc75-b3e434ed0868',
+'hogehoge',
+'url', 'Bowl',
+'2020-06-29 15:40:24+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('e38279bb-02e3-46ab-b443-d7c9710196d0',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/096465b3-6a8c-4ed3-8c37-e82d9850c217',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:24+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('2bbbc31d-f594-445c-9db2-ba053166876c',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/a437d155-ba7d-4ce5-9761-8e4afa46ca68',
+'hogehoge',
+'url', 'Animal',
+'2020-06-29 15:40:24+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('4ed2fcc7-c6fc-4bee-a56f-409cd043e518',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/7392bf55-51b5-43ad-9909-f14579da175e',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:25+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('276a4936-9c62-44e0-a3ef-2f1eade57fbe',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/91032325-1a72-4ce9-990b-811d02f3cf78',
+'hogehoge',
+'url', 'Mouth',
+'2020-06-29 15:40:25+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('aaef0d0e-e4bd-4bde-922d-0d6606599760',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/37e7ae4d-9ac3-4f5c-9cbd-51fb1ceeeb74',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:26+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('e94e99a2-2412-479a-8af4-b1637ccc4cfb',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/cd8dd732-c116-4f1e-91f0-04194dc79a7a',
+'hogehoge',
+'url', 'Petal',
+'2020-06-29 15:40:26+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('49602f4b-d785-4670-83aa-e01746f6fbea',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/176ab3bf-27cb-4362-981a-b8ce5ad91f99',
+'hogehoge',
+'url', 'Kitten',
+'2020-06-29 15:40:27+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('6ea9fd3d-a68e-4f54-981b-e37b844e61d5',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/041adda4-7b0d-4917-bffe-ce917cf91350',
+'hogehoge',
+'url', 'Siamese',
+'2020-06-29 15:40:27+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('6fda23ec-9d04-480d-9f40-cd1d05c4c959',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/2a988b2b-f9cd-485c-8b97-383ec8334a40',
+'hogehoge',
+'url', 'Pet',
+'2020-06-29 15:40:28+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('9f15935a-4a25-4d62-a2f7-29039dc3618a',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/21a62b65-ffda-411a-9e6c-29aff5108cd6',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:28+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('fcb76d83-b351-4734-981d-5db8758616f0',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/786a2d43-b3e3-4123-91b2-e89bf7f9caca',
+'hogehoge',
+'url', 'Kitten',
+'2020-06-29 15:40:28+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('82424854-3800-4ae0-bfc5-ee1f43af78cb',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/ee9ecee1-e09b-4356-8c5e-7680dc70789b',
+'hogehoge',
+'url', 'Siamese',
+'2020-06-29 15:40:29+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('2c3299e0-05f0-4915-af19-449fdcaf463a',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/928a9f4a-fb3b-40a4-9bb5-dc9f37aa4fb7',
+'hogehoge',
+'url', 'Cat',
+'2020-06-29 15:40:29+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('9f2abaea-2150-41f5-885c-9f75d91c3e84',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/1ec10169-7b49-43f1-b6a4-7d9336aaff62',
+'hogehoge',
+'url', 'Pet',
+'2020-06-29 15:40:30+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('50f26e32-6c51-45dd-9f3c-8695978c1e73',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/95aac6ee-729c-40fc-88b4-556bfb82c6fa',
+'hogehoge',
+'url', 'Sweets',
+'2020-06-29 15:40:30+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('52d45c5e-7d53-48f3-88f4-9de64544c44d',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/71be263a-ebbb-445b-a63b-0ecbdc799dca',
+'hogehoge',
+'url', 'Pug',
+'2020-06-29 15:40:31+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('b65f38e9-a002-47f7-9a73-1dbc5d0e93ca',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/a6350637-a1b0-4426-9419-e138fbdbcfd8',
+'hogehoge',
+'url', 'Bird',
+'2020-06-29 15:40:31+09'
+);
+ 
+INSERT INTO pin (id, user_id, url, title, image_url, description, upload_type, label, created_at)
+VALUES ('9ca654a0-4b90-4222-aef3-f98341ecc834',
+'mrypq',
+'https://switch-box.net/wallpaper-iphone6-plus-cute-cat.html',
+'hogehoge',
+'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/fixtures/5a37ea4e-ed8c-4ec0-93fb-ccaaf025ea3a',
+'hogehoge',
+'url', 'Person',
+'2020-06-29 15:40:31+09'
+);

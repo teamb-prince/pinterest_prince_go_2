@@ -28,7 +28,7 @@ type SavePin struct {
 func (data SQLDataStorage) DiscoverPins(limit int, offset int) ([]*Pin, error) {
 
 	if limit == 0 {
-		limit = 100
+		limit = 30
 	}
 
 	var query string
@@ -75,7 +75,7 @@ func (data SQLDataStorage) GetPins(userID string, boardID uuid.UUID, limit int, 
 		userID = "%"
 	}
 	if limit == 0 {
-		limit = 100
+		limit = 30
 	}
 
 	var query string

@@ -25,7 +25,7 @@ var IDNotFoundErr = errors.New("IdNotFound")
 func (data SQLDataStorage) GetUsers(limit int, offset int) ([]*User, error) {
 
 	if limit == 0 {
-		limit = 100
+		limit = 30
 	}
 
 	queryArgs := []interface{}{limit, offset}
