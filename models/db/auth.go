@@ -40,3 +40,24 @@ func (data SQLDataStorage) StoreToken(token *Token) error {
 
 	return nil
 }
+
+func (data SQLDataStorage) DeleteToken(token *Token) error {
+
+	query := `
+	DELETE FROM token 
+	WHERE id = $1
+	`
+	arguments := []interface{}{
+		token.TokenStr,
+	}
+
+	_, err := data.DB.Exec(
+		query,
+		arguments...,
+	)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

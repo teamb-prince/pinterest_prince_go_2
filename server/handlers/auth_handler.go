@@ -51,3 +51,28 @@ func AuthenticateUser(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 		}
 	}
 }
+
+func SignOut(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		tokenString := r.Header.Get("token")
+
+		_, err := auth.CheckTokenUser(tokenString)
+		if err != nil {
+			logs.Error("Request: %s, check error: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+		token := db.Token{
+			TokenStr: tokenString,
+		}
+		err = data.DeleteToken(&token)
+		if err != nil {
+			logs.Error("Request: %s, no token exist: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
+	}
+}

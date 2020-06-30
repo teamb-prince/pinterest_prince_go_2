@@ -71,3 +71,7 @@ func (db SQLDataStoreMock) StoreUser(user *db.User) error {
 func (db SQLDataStoreMock) StoreToken(token *db.Token) error {
 	return db.ExpectedError
 }
+
+func (db SQLDataStoreMock) DeleteToken(token *db.Token) error {
+	return db.ExpectedError
+}

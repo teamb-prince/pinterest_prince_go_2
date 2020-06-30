@@ -188,16 +188,21 @@ func CreateUser(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 			return
 		}
 
-		now := time.Now()
-
-		storedUser := &db.User{
-			ID:           requestUser.ID,
-			FirstName:    requestUser.ID,
-			Email:        requestUser.Email,
-			PasswordHash: hashedPassword,
-			Role:         defaultRole,
-			ProfileImage: defaultProfileImage,
-			CreatedAt:    &now,
+		err = CheckUserValidation(requestUser.ID, requestUser.Password)
+		if err != nil {
+			if err == PasswordValidationErr {
+				logs.Error("Request: %s, password validation error: %v", RequestSummary(r), err)
+				BadRequest(w, r)
+				return
+			} else if err == UserIDValidationErr {
+				logs.Error("Request: %s, user id validation error: %v", RequestSummary(r), err)
+				BadRequest(w, r)
+				return
+			} else {
+				logs.Error("Request: %s, : internal server error %v", RequestSummary(r), err)
+				InternalServerError(w, r)
+				return
+			}
 		}
 
 		err = CheckUserExist(data, requestUser.ID)
@@ -211,6 +216,18 @@ func CreateUser(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 				InternalServerError(w, r)
 				return
 			}
+		}
+
+		now := time.Now()
+
+		storedUser := &db.User{
+			ID:           requestUser.ID,
+			FirstName:    requestUser.ID,
+			Email:        requestUser.Email,
+			PasswordHash: hashedPassword,
+			Role:         defaultRole,
+			ProfileImage: defaultProfileImage,
+			CreatedAt:    &now,
 		}
 
 		if err := data.StoreUser(storedUser); err != nil {

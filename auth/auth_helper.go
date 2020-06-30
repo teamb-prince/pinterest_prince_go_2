@@ -24,7 +24,11 @@ func ParseToken(tokenString string) (*db.TokenClaims, error) {
 	return tokenClaims, nil
 }
 
-func CheckTokenUser(tokenString string) (string, error) {
+func CheckToken(tokenString string) (string, error) {
+
+}
+
+func TokenUser(tokenString string) (string, error) {
 	claims, err := ParseToken(tokenString)
 	if err != nil {
 		return "", nil
@@ -32,4 +36,14 @@ func CheckTokenUser(tokenString string) (string, error) {
 
 	userID := claims.UserID
 	return userID, nil
+}
+
+func GetExpire(tokenString string) (int64, error) {
+	claims, err := ParseToken(tokenString)
+	if err != nil {
+		return 0, nil
+	}
+
+	expire := claims.Expire
+	return expire, nil
 }

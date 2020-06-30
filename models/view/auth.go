@@ -6,6 +6,10 @@ import (
 	"github.com/teamb-prince/pinterest_prince_go/models/db"
 )
 
+type RequestSignOut struct {
+	Token string `json:"token"`
+}
+
 type RequestAuth struct {
 	ID       string `json:"id"`
 	Password string `json:"password"`

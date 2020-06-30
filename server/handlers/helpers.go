@@ -4,6 +4,8 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
+	"unicode"
+	"unicode/utf8"
 
 	uuid "github.com/satori/go.uuid"
 	"github.com/teamb-prince/pinterest_prince_go/models/db"
@@ -22,6 +24,8 @@ const (
 
 var ForbiddenBoardErr = errors.New("Forbidden Board")
 var AlreadyExistErr = errors.New("ID Already Exist")
+var PasswordValidationErr = errors.New("Password Validation Error")
+var UserIDValidationErr = errors.New("ID Validation Error")
 
 func RequestSummary(r *http.Request) string {
 	return fmt.Sprintf("%v %v", r.Method, r.URL)
@@ -101,4 +105,49 @@ func CheckUserExist(data db.DataStorage, userID string) error {
 		return AlreadyExistErr
 	}
 	return err
+}
+
+func verifyUserID(s string) bool {
+	char := false
+	number := false
+	for _, c := range s {
+		switch {
+		case unicode.IsNumber(c):
+			number = true
+		case unicode.IsLower(c) || unicode.IsUpper(c):
+			char = true
+		default:
+			return false
+		}
+	}
+	len := utf8.RuneCountInString(s)
+	return 4 <= len && len < 16 && number && char
+}
+
+func verifyPassword(s string) bool {
+	char := false
+	number := false
+	for _, c := range s {
+		switch {
+		case unicode.IsNumber(c):
+			number = true
+		case unicode.IsLower(c) || unicode.IsUpper(c):
+			char = true
+		default:
+			return false
+		}
+	}
+	len := utf8.RuneCountInString(s)
+	return 8 <= len && len < 16 && number && char
+}
+
+func CheckUserValidation(userID string, password string) error {
+
+	if !verifyUserID(userID) {
+		return UserIDValidationErr
+	}
+	if !verifyPassword(password) {
+		return PasswordValidationErr
+	}
+	return nil
 }
