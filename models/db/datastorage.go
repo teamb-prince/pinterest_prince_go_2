@@ -10,7 +10,7 @@ type DataStorage interface {
 	GetTopics() ([]*Topic, error)
 	GetPin(pinID uuid.UUID, userID string) (*Pin, error)
 	DiscoverPins(limit int, offset int) ([]*Pin, error)
-	GetPins(userID string, boardID uuid.UUID, limit int, offset int) ([]*Pin, error)
+	GetPins(userID string, boardID uuid.UUID, tag string, limit int, offset int) ([]*Pin, error)
 	StorePin(pin *Pin) error
 	SavePin(pin *SavePin) error
 	GetBoard(boardID uuid.UUID) (*Board, error)

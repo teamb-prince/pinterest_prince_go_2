@@ -78,5 +78,6 @@ func middlewareAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager aw
 
 	mux.HandleFunc("/profile/boards", handlers.ServeProfileBoards(data)).Methods(http.MethodGet)
 	mux.HandleFunc("/profile/pins", handlers.ServeProfilePins(data)).Methods(http.MethodGet)
+	mux.HandleFunc("/profile/user", handlers.ServeProfileUser(data)).Methods(http.MethodGet)
 
 }

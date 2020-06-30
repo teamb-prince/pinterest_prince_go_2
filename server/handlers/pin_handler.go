@@ -23,10 +23,11 @@ func ServePins(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 		qValues := r.URL.Query()
 		userID := qValues.Get("user_id")
 		boardID, _ := uuid.FromString(qValues.Get("board_id"))
+		label := qValues.Get("label")
 		limit, _ := strconv.Atoi(qValues.Get("limit"))
 		offset, _ := strconv.Atoi(qValues.Get("offset"))
 
-		pins, err := data.GetPins(userID, boardID, limit, offset)
+		pins, err := data.GetPins(userID, boardID, label, limit, offset)
 		if err != nil {
 			logs.Error("Request: %s, reading pins from database: %v", RequestSummary(r), err)
 			InternalServerError(w, r)

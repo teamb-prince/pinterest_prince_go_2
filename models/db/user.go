@@ -25,7 +25,7 @@ var IDNotFoundErr = errors.New("IdNotFound")
 func (data SQLDataStorage) GetUsers(limit int, offset int) ([]*User, error) {
 
 	if limit == 0 {
-		limit = 30
+		limit = 50
 	}
 
 	queryArgs := []interface{}{limit, offset}
@@ -97,17 +97,21 @@ func (data SQLDataStorage) GetUser(userID string) (*User, error) {
 func (data SQLDataStorage) StoreUser(user *User) error {
 
 	query := `
-	INSERT INTO user_account (id, first_name, email, password_hash, role, profile_image, created_at) 
-	VALUES ($1, $2, $3, $4, $5, $6, $7)
+	INSERT INTO user_account (id, first_name, last_name, email, password_hash, role, profile_image, description, location, web, created_at) 
+	VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11)
 	RETURNING id
 	`
 	arguments := []interface{}{
 		user.ID,
 		user.FirstName,
+		user.LastName,
 		user.Email,
 		user.PasswordHash,
 		user.Role,
 		user.ProfileImage,
+		user.Description,
+		user.Location,
+		user.Web,
 		user.CreatedAt,
 	}
 
@@ -127,10 +131,14 @@ func userFromRows(rows *sql.Rows) (*User, error) {
 	err := rows.Scan(
 		&user.ID,
 		&user.FirstName,
+		&user.LastName,
 		&user.Email,
 		&user.PasswordHash,
 		&user.Role,
 		&user.ProfileImage,
+		&user.Description,
+		&user.Location,
+		&user.Web,
 		&user.CreatedAt,
 	)
 	if err != nil {

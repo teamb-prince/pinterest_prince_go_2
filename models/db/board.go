@@ -63,7 +63,7 @@ func (data SQLDataStorage) GetBoards(userID string, topicID uuid.UUID, limit int
 		userID = "%"
 	}
 	if limit == 0 {
-		limit = 100
+		limit = 50
 	}
 
 	var query string

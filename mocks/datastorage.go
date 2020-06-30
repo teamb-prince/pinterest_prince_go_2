@@ -24,7 +24,7 @@ func (db SQLDataStoreMock) DiscoverPins(limit int, offset int) ([]*db.Pin, error
 	return db.ExpectedPins, db.ExpectedError
 }
 
-func (db SQLDataStoreMock) GetPins(userID string, boardID uuid.UUID, limit int, offset int) ([]*db.Pin, error) {
+func (db SQLDataStoreMock) GetPins(userID string, boardID uuid.UUID, tag string, limit int, offset int) ([]*db.Pin, error) {
 	return db.ExpectedPins, db.ExpectedError
 }
 

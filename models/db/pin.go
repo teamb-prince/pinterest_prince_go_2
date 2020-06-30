@@ -28,7 +28,7 @@ type SavePin struct {
 func (data SQLDataStorage) DiscoverPins(limit int, offset int) ([]*Pin, error) {
 
 	if limit == 0 {
-		limit = 30
+		limit = 50
 	}
 
 	var query string
@@ -69,13 +69,16 @@ func (data SQLDataStorage) DiscoverPins(limit int, offset int) ([]*Pin, error) {
 	return pins, nil
 }
 
-func (data SQLDataStorage) GetPins(userID string, boardID uuid.UUID, limit int, offset int) ([]*Pin, error) {
+func (data SQLDataStorage) GetPins(userID string, boardID uuid.UUID, label string, limit int, offset int) ([]*Pin, error) {
 
 	if userID == "" {
 		userID = "%"
 	}
+	if label == "" {
+		label = "%"
+	}
 	if limit == 0 {
-		limit = 30
+		limit = 50
 	}
 
 	var query string
@@ -85,25 +88,29 @@ func (data SQLDataStorage) GetPins(userID string, boardID uuid.UUID, limit int, 
 		query = (`
 		SELECT p.id, p.user_id, p.url, p.title, p.image_url, p.description, p.upload_type, p.label, p.created_at
 		FROM pin p, pin_board pb, board b
-		WHERE b.user_id LIKE $1
-		AND b.id = pb.board_id AND p.id = pb.pin_id
-		ORDER BY p.created_at
-		LIMIT $2
-		OFFSET $3
-		`)
-		queryArgs = []interface{}{userID, limit, offset}
-	} else {
-		query = (`
-		SELECT p.id, p.user_id, p.url, p.title, p.image_url, p.description, p.upload_type, p.label, p.created_at
-		FROM pin p, pin_board pb, board b
-		WHERE b.user_id LIKE $1 AND pb.board_id = $2 
-		AND b.user_id LIKE $1
-		AND b.id = pb.board_id AND p.id = pb.pin_id
+		WHERE b.user_id LIKE $1 
+		AND p.label LIKE $2
+		AND b.id = pb.board_id 
+		AND p.id = pb.pin_id
 		ORDER BY p.created_at
 		LIMIT $3
 		OFFSET $4
 		`)
-		queryArgs = []interface{}{userID, boardID.String(), limit, offset}
+		queryArgs = []interface{}{userID, label, limit, offset}
+	} else {
+		query = (`
+		SELECT p.id, p.user_id, p.url, p.title, p.image_url, p.description, p.upload_type, p.label, p.created_at
+		FROM pin p, pin_board pb, board b
+		WHERE b.user_id LIKE $1 
+		AND p.label LIKE $2
+		AND pb.board_id = $3 
+		AND b.id = pb.board_id 
+		AND p.id = pb.pin_id
+		ORDER BY p.created_at
+		LIMIT $4
+		OFFSET $5
+		`)
+		queryArgs = []interface{}{userID, label, boardID.String(), limit, offset}
 	}
 
 	rows, err := data.DB.Query(query, queryArgs...)
