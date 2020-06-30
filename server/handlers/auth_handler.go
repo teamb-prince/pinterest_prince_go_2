@@ -57,7 +57,7 @@ func SignOut(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 
 		tokenString := r.Header.Get("token")
 
-		_, err := auth.CheckTokenUser(tokenString)
+		_, err := auth.GetTokenUser(tokenString)
 		if err != nil {
 			logs.Error("Request: %s, check error: %v", RequestSummary(r), err)
 			InternalServerError(w, r)

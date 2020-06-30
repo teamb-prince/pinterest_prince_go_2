@@ -24,7 +24,7 @@ func ServeProfileUser(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 
 		tokenHeader := r.Header.Get("token")
 
-		userID, err := auth.CheckTokenUser(tokenHeader)
+		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
 			BadRequest(w, r)
@@ -58,7 +58,7 @@ func ServeProfilePins(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 
 		tokenHeader := r.Header.Get("token")
 
-		userID, err := auth.CheckTokenUser(tokenHeader)
+		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
 			BadRequest(w, r)
@@ -91,7 +91,7 @@ func ServeProfileBoards(data db.DataStorage) func(http.ResponseWriter, *http.Req
 	return func(w http.ResponseWriter, r *http.Request) {
 		tokenHeader := r.Header.Get("token")
 
-		userID, err := auth.CheckTokenUser(tokenHeader)
+		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
 			BadRequest(w, r)

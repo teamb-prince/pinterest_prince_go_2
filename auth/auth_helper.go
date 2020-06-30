@@ -24,11 +24,21 @@ func ParseToken(tokenString string) (*db.TokenClaims, error) {
 	return tokenClaims, nil
 }
 
-func CheckToken(tokenString string) (string, error) {
-
+func CheckToken(data db.DataStorage, tokenString string) (bool, error) {
+	token := db.Token{
+		TokenStr: tokenString,
+	}
+	_, err := data.GetToken(&token)
+	if err != nil {
+		if err == db.IDNotFoundErr {
+			return false, nil
+		}
+		return false, err
+	}
+	return true, nil
 }
 
-func TokenUser(tokenString string) (string, error) {
+func GetTokenUser(tokenString string) (string, error) {
 	claims, err := ParseToken(tokenString)
 	if err != nil {
 		return "", nil

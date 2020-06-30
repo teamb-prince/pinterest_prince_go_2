@@ -137,7 +137,7 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.AWSManager) func(http.Respo
 
 		tokenHeader := r.Header.Get("token")
 
-		userID, err := auth.CheckTokenUser(tokenHeader)
+		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
 			BadRequest(w, r)
@@ -234,7 +234,7 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.AWSManager) func(http.Res
 
 		tokenHeader := r.Header.Get("token")
 
-		userID, err := auth.CheckTokenUser(tokenHeader)
+		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
 			BadRequest(w, r)
@@ -359,7 +359,7 @@ func SavePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 
 		tokenHeader := r.Header.Get("token")
 
-		userID, err := auth.CheckTokenUser(tokenHeader)
+		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
 			BadRequest(w, r)

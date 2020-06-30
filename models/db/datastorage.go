@@ -20,6 +20,7 @@ type DataStorage interface {
 	GetUser(userID string) (*User, error)
 	GetUsers(limit int, offset int) ([]*User, error)
 	StoreUser(user *User) error
+	GetToken(user *Token) (*Token, error)
 	StoreToken(user *Token) error
 	DeleteToken(user *Token) error
 }

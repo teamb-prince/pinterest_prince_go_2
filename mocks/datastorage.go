@@ -14,6 +14,7 @@ type SQLDataStoreMock struct {
 	ExpectedBoards []*db.Board
 	ExpectedUser   *db.User
 	ExpectedUsers  []*db.User
+	ExpectedToken  *db.Token
 }
 
 func (db SQLDataStoreMock) GetTopics() ([]*db.Topic, error) {
@@ -66,6 +67,10 @@ func (db SQLDataStoreMock) GetUsers(limit int, offset int) ([]*db.User, error) {
 
 func (db SQLDataStoreMock) StoreUser(user *db.User) error {
 	return db.ExpectedError
+}
+
+func (db SQLDataStoreMock) GetToken(token *db.Token) (*db.Token, error) {
+	return db.ExpectedToken, db.ExpectedError
 }
 
 func (db SQLDataStoreMock) StoreToken(token *db.Token) error {

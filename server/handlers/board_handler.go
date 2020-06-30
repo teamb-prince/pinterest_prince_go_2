@@ -105,7 +105,7 @@ func CreateBoard(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 
 		tokenHeader := r.Header.Get("token")
 
-		userID, err := auth.CheckTokenUser(tokenHeader)
+		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
 			BadRequest(w, r)
