@@ -24,6 +24,13 @@ func ServeProfileUser(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 
 		tokenHeader := r.Header.Get("token")
 
+		exist, err := auth.CheckToken(data, tokenHeader)
+		if !exist {
+			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
 		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
@@ -58,6 +65,13 @@ func ServeProfilePins(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 
 		tokenHeader := r.Header.Get("token")
 
+		exist, err := auth.CheckToken(data, tokenHeader)
+		if !exist {
+			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
+
 		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
 			logs.Error("Request: %s, unable to parse token: %v", RequestSummary(r), err)
@@ -90,6 +104,13 @@ func ServeProfilePins(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 func ServeProfileBoards(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		tokenHeader := r.Header.Get("token")
+
+		exist, err := auth.CheckToken(data, tokenHeader)
+		if !exist {
+			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			BadRequest(w, r)
+			return
+		}
 
 		userID, err := auth.GetTokenUser(tokenHeader)
 		if err != nil {
