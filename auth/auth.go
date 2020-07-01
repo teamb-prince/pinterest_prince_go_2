@@ -9,7 +9,7 @@ import (
 	"github.com/teamb-prince/pinterest_prince_go/models/db"
 )
 
-var StoreTokenErr = errors.New("Faild to store token")
+var StoreTokenErr = errors.New("Failed to store token")
 
 // var UserExistsErr = errors.New("email already exists in the database")
 var UnauthorizedErr = errors.New("Request Unauthorized")

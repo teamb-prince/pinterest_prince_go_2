@@ -3,8 +3,8 @@ package awsmanager
 import (
 	"errors"
 	"fmt"
+	"io"
 	"io/ioutil"
-	"mime/multipart"
 	"net/http"
 	"os"
 
@@ -63,7 +63,7 @@ func (s *AWSManager) Init() (err error) {
 	return
 }
 
-func (s *AWSManager) Upload(file multipart.File, fileName string, extension string) (url string, err error) {
+func (s *AWSManager) Upload(buf io.Reader, fileName string, extension string, dirName string) (url string, err error) {
 
 	if fileName == "" {
 		return "", errors.New("fileName is required")
@@ -86,10 +86,10 @@ func (s *AWSManager) Upload(file multipart.File, fileName string, extension stri
 
 	result, err := s.Uploader.Upload(&s3manager.UploadInput{
 		ACL:         aws.String("public-read"),
-		Body:        file,
+		Body:        buf,
 		Bucket:      aws.String(s.Bucket),
 		ContentType: aws.String(contentType),
-		Key:         aws.String(s.Keys + "/" + fileName),
+		Key:         aws.String(dirName + "/" + fileName),
 	})
 
 	if err != nil {
@@ -99,12 +99,12 @@ func (s *AWSManager) Upload(file multipart.File, fileName string, extension stri
 	return result.Location, nil
 }
 
-func (s *AWSManager) Download(fileName string) ([]byte, error) {
+func (s *AWSManager) Download(fileName string, dirName string) ([]byte, error) {
 	buffer := aws.NewWriteAtBuffer([]byte{})
 
 	_, err := s.Downloader.Download(buffer, &s3.GetObjectInput{
 		Bucket: aws.String(s.Bucket),
-		Key:    aws.String(s.Keys + "/" + fileName),
+		Key:    aws.String(dirName + "/" + fileName),
 	})
 	if err != nil {
 		if err, ok := err.(awserr.Error); ok && err.Code() == "NoSuchKey" {
@@ -135,6 +135,7 @@ func (am *AWSManager) Detect(url string) ([]string, error) {
 
 	// 画像ファイルのデータを全て読み込み
 	bytes, err := ioutil.ReadAll(image.Body)
+
 	if err != nil {
 		fmt.Println(err.Error())
 		return nil, err

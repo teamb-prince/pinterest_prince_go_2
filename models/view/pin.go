@@ -8,15 +8,16 @@ import (
 )
 
 type Pin struct {
-	ID          uuid.UUID  `json:"id"`
-	UserID      string     `json:"user_id"`
-	URL         string     `json:"url"`
-	Title       string     `json:"title"`
-	ImageURL    string     `json:"image_url"`
-	Description string     `json:"description"`
-	UploadType  string     `json:"upload_type"`
-	Label       string     `json:"label"`
-	CreatedAt   *time.Time `json:"created_at"`
+	ID            uuid.UUID  `json:"id"`
+	UserID        string     `json:"user_id"`
+	URL           string     `json:"url"`
+	Title         string     `json:"title"`
+	ImageURL      string     `json:"image_url"`
+	ThumbImageURL string     `json:"thumb_image_url"`
+	Description   string     `json:"description"`
+	UploadType    string     `json:"upload_type"`
+	Label         string     `json:"label"`
+	CreatedAt     *time.Time `json:"created_at"`
 }
 
 type PinRequest struct {
@@ -41,6 +42,7 @@ func NewPin(pin *db.Pin) *Pin {
 		pin.URL,
 		pin.Title,
 		pin.ImageURL,
+		pin.ThumbImageURL,
 		pin.Description,
 		pin.UploadType,
 		pin.Label,

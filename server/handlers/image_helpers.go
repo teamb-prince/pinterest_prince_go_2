@@ -1,12 +1,17 @@
 package handlers
 
 import (
+	"bytes"
 	"errors"
+	"fmt"
 	"image"
-	_ "image/gif"
-	_ "image/jpeg"
-	_ "image/png"
-	"mime/multipart"
+	"image/gif"
+	"image/jpeg"
+	"image/png"
+	"io"
+	"io/ioutil"
+	"log"
+	"os"
 
 	"net/http"
 	"net/url"
@@ -15,15 +20,16 @@ import (
 	uuid "github.com/satori/go.uuid"
 	"github.com/teamb-prince/pinterest_prince_go/api/awsmanager"
 	"github.com/teamb-prince/pinterest_prince_go/logs"
+	"golang.org/x/image/draw"
 )
 
 const (
 	minImageSize = 200
 )
 
-var getTitleError = errors.New("Faild get title from url")
-var getImageError = errors.New("Faild get image from url")
-var uploadImageError = errors.New("Faild upload image (S3)")
+var getTitleError = errors.New("Failed get title from url")
+var getImageError = errors.New("Failed get image from url")
+var uploadImageError = errors.New("Failed upload image (S3)")
 
 func GetImageSize(imageUrl string) bool {
 
@@ -87,16 +93,83 @@ func GetImages(baseURL string, res *http.Response) ([]string, error) {
 	return result, nil
 }
 
-func UploadImage(s3 *awsmanager.AWSManager, file multipart.File, format string) (string, error) {
+func UploadImage(s3 *awsmanager.AWSManager, buf io.Reader, format string) (string, error) {
 
 	filename := uuid.NewV4().String()
 
-	url, err := s3.Upload(file, filename, format)
+	url, err := s3.Upload(buf, filename, format, "image")
 	if err != nil {
 		return "", uploadImageError
 	}
 
 	return url, err
+
+}
+
+func UploadThumbImageURL(s3 *awsmanager.AWSManager, url string) (string, error) {
+
+	// 画像ファイルを取得
+	res, err := http.Get(url)
+	if err != nil {
+		fmt.Println(err.Error())
+		return "", err
+	}
+	defer res.Body.Close()
+
+	// 画像ファイルのデータを全て読み込み
+	resBytes, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		fmt.Println(err.Error())
+		return "", err
+	}
+
+	imgSrc, format, err := image.Decode(bytes.NewReader(resBytes))
+	if err != nil {
+		log.Fatalln(err)
+		return "", err
+	}
+
+	//rectange of image
+	rctSrc := imgSrc.Bounds()
+
+	size := 200
+	//resize
+	imgDst := image.NewRGBA(image.Rect(0, 0, size, int(size*rctSrc.Dy()/rctSrc.Dx())))
+	draw.CatmullRom.Scale(imgDst, imgDst.Bounds(), imgSrc, rctSrc, draw.Over, nil)
+
+	//create resized image file
+	dst := new(bytes.Buffer)
+
+	//encode resized image
+	switch format {
+	case "jpeg":
+		if err := jpeg.Encode(dst, imgDst, &jpeg.Options{Quality: 100}); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			return "", err
+		}
+	case "gif":
+		if err := gif.Encode(dst, imgDst, nil); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			return "", err
+		}
+	case "png":
+		if err := png.Encode(dst, imgDst); err != nil {
+			fmt.Fprintln(os.Stderr, err)
+			return "", err
+		}
+	default:
+		fmt.Fprintln(os.Stderr, "format error")
+		return "", errors.New("format error")
+	}
+
+	filename := uuid.NewV4().String()
+
+	resultURL, err := s3.Upload(dst, filename, format, "thumb")
+	if err != nil {
+		return "", uploadImageError
+	}
+
+	return resultURL, err
 
 }
 

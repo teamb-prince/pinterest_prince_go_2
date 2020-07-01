@@ -1,15 +1,24 @@
 package server
 
 import (
+	"bytes"
 	"database/sql"
 	"fmt"
+	"image"
+	"image/gif"
+	"image/jpeg"
+	"image/png"
+	"io/ioutil"
+	"log"
 	"net/http"
+	"os"
 
 	"github.com/gorilla/mux"
 	"github.com/teamb-prince/pinterest_prince_go/api/awsmanager"
 	"github.com/teamb-prince/pinterest_prince_go/logs"
 	"github.com/teamb-prince/pinterest_prince_go/models/db"
 	"github.com/teamb-prince/pinterest_prince_go/server/handlers"
+	"golang.org/x/image/draw"
 )
 
 func Start(port int, dbConn *sql.DB) error {
@@ -25,11 +34,14 @@ func Start(port int, dbConn *sql.DB) error {
 	}
 	logs.Info("Server started...")
 	logs.Info("Listening on %s", s.Addr)
+
+	// 魔界錬金術
+	// dirwalk("./tmp_images", *s3manager)
+
 	return s.ListenAndServe()
 
 }
 
-// [TODO] JWT認証を導入する
 func attachHandlers(mux *mux.Router, data db.DataStorage) {
 	mux.HandleFunc("/health", handlers.HealthHandler()).Methods(http.MethodGet)
 
@@ -80,4 +92,63 @@ func middlewareAttachHandlers(mux *mux.Router, data db.DataStorage, s3manager aw
 	mux.HandleFunc("/profile/pins", handlers.ServeProfilePins(data)).Methods(http.MethodGet)
 	mux.HandleFunc("/profile/user", handlers.ServeProfileUser(data)).Methods(http.MethodGet)
 
+}
+
+func dirwalk(dir string, s3 awsmanager.AWSManager) {
+	files, err := ioutil.ReadDir(dir)
+	if err != nil {
+		panic(err)
+	}
+
+	for _, file := range files {
+		file.Name()
+
+		f, _ := os.Open(dir + "/" + file.Name())
+
+		imgSrc, format, err := image.Decode(f)
+		if err != nil {
+			log.Fatalln(err)
+			return
+		}
+
+		//rectange of image
+		rctSrc := imgSrc.Bounds()
+
+		size := 200
+		//resize
+		imgDst := image.NewRGBA(image.Rect(0, 0, size, int(size*rctSrc.Dy()/rctSrc.Dx())))
+		draw.CatmullRom.Scale(imgDst, imgDst.Bounds(), imgSrc, rctSrc, draw.Over, nil)
+
+		//create resized image file
+		dst := new(bytes.Buffer)
+
+		//encode resized image
+		switch format {
+		case "jpeg":
+			if err := jpeg.Encode(dst, imgDst, &jpeg.Options{Quality: 100}); err != nil {
+				fmt.Fprintln(os.Stderr, err)
+				return
+			}
+		case "gif":
+			if err := gif.Encode(dst, imgDst, nil); err != nil {
+				fmt.Fprintln(os.Stderr, err)
+				return
+			}
+		case "png":
+			if err := png.Encode(dst, imgDst); err != nil {
+				fmt.Fprintln(os.Stderr, err)
+				return
+			}
+		default:
+			fmt.Fprintln(os.Stderr, "format error")
+			return
+		}
+
+		_, err = s3.Upload(dst, file.Name(), format, "thumb")
+		if err != nil {
+			return
+		}
+	}
+
+	return
 }

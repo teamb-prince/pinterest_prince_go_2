@@ -1,8 +1,10 @@
 package handlers
 
 import (
+	"bytes"
 	"encoding/json"
 	"image"
+	"io"
 	"net/http"
 	"strconv"
 	"strings"
@@ -195,24 +197,34 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.AWSManager) func(http.Respo
 		labels, err = s3.Detect(requestPin.ImageURL)
 		if err != nil {
 			logs.Error("Request: %s, unable to detect images: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
 			return
 		}
 
 		label := labels[0]
 
+		response, err := http.Get(requestPin.ImageURL)
+		if err != nil {
+			panic(err)
+		}
+		defer response.Body.Close()
+
+		thumbImageURL, err := UploadThumbImageURL(&s3, requestPin.ImageURL)
+
 		uploadType := "url"
 		now := time.Now()
 		storedPin := &db.Pin{
-			ID:          uuid.Nil,
-			UserID:      userID,
-			URL:         requestPin.URL,
-			Title:       requestPin.Title,
-			ImageURL:    requestPin.ImageURL,
-			Description: requestPin.Description,
-			UploadType:  uploadType,
-			BoardID:     boardID,
-			Label:       label,
-			CreatedAt:   &now,
+			ID:            uuid.Nil,
+			UserID:        userID,
+			URL:           requestPin.URL,
+			Title:         requestPin.Title,
+			ImageURL:      requestPin.ImageURL,
+			ThumbImageURL: thumbImageURL,
+			Description:   requestPin.Description,
+			UploadType:    uploadType,
+			BoardID:       boardID,
+			Label:         label,
+			CreatedAt:     &now,
 		}
 
 		if err := data.StorePin(storedPin); err != nil {
@@ -291,14 +303,19 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.AWSManager) func(http.Res
 		}
 		defer file.Close()
 
-		_, format, err := image.DecodeConfig(file)
+		buf1 := new(bytes.Buffer)
+		buf2 := new(bytes.Buffer)
+		writer := io.MultiWriter(buf1, buf2)
+		io.Copy(writer, file)
+
+		_, format, err := image.DecodeConfig(buf1)
 		if err != nil {
 			logs.Error("Request: %s, Invalid format: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}
 
-		s3Url, err := UploadImage(&s3, file, format)
+		s3URL, err := UploadImage(&s3, buf2, format)
 		if err != nil {
 			logs.Error("Request: %s, unable to upload images: %v", RequestSummary(r), err)
 			InternalServerError(w, r)
@@ -323,28 +340,37 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.AWSManager) func(http.Res
 		var labels []string
 
 		if format == "png" || format == "jpeg" {
-			labels, err = s3.Detect(s3Url)
+			labels, err = s3.Detect(s3URL)
 			if err != nil {
 				logs.Error("Request: %s, unable to detect images: %v", RequestSummary(r), err)
+				InternalServerError(w, r)
 				return
 			}
 		}
 
 		label := labels[0]
 
+		thumbImageURL, err := UploadThumbImageURL(&s3, s3URL)
+		if err != nil {
+			logs.Error("Request: %s, unable to upload images: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
 		uploadType := "local"
 		now := time.Now()
 		storedPin := &db.Pin{
-			ID:          uuid.Nil,
-			UserID:      userID,
-			URL:         url,
-			Title:       requestPin.Title,
-			ImageURL:    s3Url,
-			Description: requestPin.Description,
-			UploadType:  uploadType,
-			BoardID:     boardID,
-			Label:       label,
-			CreatedAt:   &now,
+			ID:            uuid.Nil,
+			UserID:        userID,
+			URL:           url,
+			Title:         requestPin.Title,
+			ImageURL:      s3URL,
+			ThumbImageURL: thumbImageURL,
+			Description:   requestPin.Description,
+			UploadType:    uploadType,
+			BoardID:       boardID,
+			Label:         label,
+			CreatedAt:     &now,
 		}
 
 		if err := data.StorePin(storedPin); err != nil {

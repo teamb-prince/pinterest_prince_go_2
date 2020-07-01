@@ -1,12 +1,14 @@
 CREATE TABLE pin
 (
-    id         UUID PRIMARY KEY DEFAULT UUID_GENERATE_V4(),
+    id UUID PRIMARY KEY DEFAULT UUID_GENERATE_V4(),
     user_id TEXT references user_account(id),
-    url      TEXT,
+    url TEXT,
     title TEXT,
-    image_url     TEXT,
+    image_url TEXT,
+    thumb_image_url TEXT,
     description TEXT,
-    upload_type	TEXT,
+    upload_type TEXT,
     label TEXT,
-    created_at TIMESTAMP WITHOUT TIME ZONE
+    created_at TIMESTAMP
+    WITHOUT TIME ZONE
 )

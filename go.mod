@@ -17,6 +17,7 @@ require (
 	github.com/satori/go.uuid v1.2.0
 	github.com/stretchr/testify v1.5.1
 	golang.org/x/crypto v0.0.0-20200311171314-f7b00557c8c4
+	golang.org/x/image v0.0.0-20200618115811-c13761719519
 	golang.org/x/net v0.0.0-20200202094626-16171245cfb2
 	gopkg.in/check.v1 v1.0.0-20180628173108-788fd7840127 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
