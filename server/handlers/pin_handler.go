@@ -19,6 +19,45 @@ import (
 	"github.com/teamb-prince/pinterest_prince_go/models/view"
 )
 
+var (
+	featureLabel = []string{"", "Starry Sky", "Cat", "Desert"}
+)
+
+func ServeFeature(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		qValues := r.URL.Query()
+		userID := qValues.Get("user_id")
+		boardID, _ := uuid.FromString(qValues.Get("board_id"))
+		label := featureLabel
+		limit, _ := strconv.Atoi(qValues.Get("limit"))
+		offset, _ := strconv.Atoi(qValues.Get("offset"))
+
+		vars := mux.Vars(r)
+		featureID, _ := strconv.Atoi(vars["id"])
+
+		pins, err := data.GetPins(userID, boardID, label[featureID], limit, offset)
+		if err != nil {
+			logs.Error("Request: %s, reading pins from database: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+		bytes, err := json.Marshal(view.NewPins(pins))
+		if err != nil {
+			logs.Error("Request: %s, Serialize Error: %v", RequestSummary(r), err)
+			InternalServerError(w, r)
+			return
+		}
+
+		w.Header().Set(contentType, jsonContent)
+
+		if _, err = w.Write(bytes); err != nil {
+			logs.Error("Request: %s, writing response: %v", RequestSummary(r), err)
+		}
+	}
+}
+
 func ServePins(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
@@ -141,7 +180,7 @@ func CreatePinURL(data db.DataStorage, s3 awsmanager.AWSManager) func(http.Respo
 
 		exist, err := auth.CheckToken(data, tokenHeader)
 		if !exist {
-			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			logs.Error("Request: %s, Token does not exist: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}
@@ -255,7 +294,7 @@ func CreatePinLocal(data db.DataStorage, s3 awsmanager.AWSManager) func(http.Res
 
 		exist, err := auth.CheckToken(data, tokenHeader)
 		if !exist {
-			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			logs.Error("Request: %s, Token does not exist: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}
@@ -401,7 +440,7 @@ func SavePin(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
 
 		exist, err := auth.CheckToken(data, tokenHeader)
 		if !exist {
-			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			logs.Error("Request: %s, Token does not exist: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}

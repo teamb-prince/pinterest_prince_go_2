@@ -2678,7 +2678,258 @@ VALUES
         'url', 'Vegetation', '2020-06-30 10:26:12+09');
 
 
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('c5ea83c8-c12d-4997-84d5-35b9f9462bb3', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/001.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/001.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('3a0f4c8f-5dd0-451c-b91e-7d70abf5c245', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/002.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/002.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('60efead8-7caf-4620-b984-d3169bc4690c', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/003.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/003.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('0d1b286a-3e57-4ffd-a6b2-ddc6f685f9bd', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/004.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/004.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('781023be-82ca-4ee1-b488-4e040eb6d6b9', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/005.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/005.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('69b635cb-2aaf-4d5a-88c5-89f6f0ffa3f7', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/006.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/006.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+-- INSERT INTO pin
+--     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+-- VALUES
+--     ('2baa7b19-ee63-4c5e-88ba-028180bb42b3', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+--         'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/007.png',
+--         'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/007.png', 'hogehoge',
+--         'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('a191b12f-0c6b-45e7-89f9-28ec3b2490b0', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/008.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/008.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('92b3ef2c-a44a-4dd5-9627-dc1ae879dade', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/009.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/009.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('464bf0cc-57ac-452a-ba15-5d4732d6eb43', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/010.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/010.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('9a1b975d-79f0-45a7-8955-94090cd81746', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/011.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/011.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('6bdb450e-3ae0-489d-9c38-a6ea07d50085', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/012.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/012.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('da2b0791-c44c-4a40-abae-610c893038f7', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/013.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/013.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('861d60b6-20f5-4244-90ea-bf35359af459', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/014.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/014.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('4ceff8eb-75e3-49b8-9ffb-efa333788d04', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/015.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/015.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('33096ad5-ebd5-4654-9e2e-2325fc1fedfc', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/016.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/016.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('3db293af-a1ae-49df-962e-171164343e17', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/017.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/017.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('3b9d4073-0127-4dac-8281-38a357c79d1e', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/018.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/018.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('405b0627-f7c8-4af0-a5de-e915fce5b341', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/019.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/019.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('fba8800b-a816-446f-8521-a512a741a62a', 'mrypq', 'https://icotto.jp/presses/16925', 'hogehoge',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/sample/020.png',
+        'https://bucket-pinterest-001.s3.ap-northeast-1.amazonaws.com/thumb/020.png', 'hogehoge',
+        'url', 'Starry Sky', '2020-06-30 10:26:12+09');
+
+
 -- pin_board
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('c5ea83c8-c12d-4997-84d5-35b9f9462bb3', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('3a0f4c8f-5dd0-451c-b91e-7d70abf5c245', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('60efead8-7caf-4620-b984-d3169bc4690c', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('0d1b286a-3e57-4ffd-a6b2-ddc6f685f9bd', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('781023be-82ca-4ee1-b488-4e040eb6d6b9', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('69b635cb-2aaf-4d5a-88c5-89f6f0ffa3f7', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('fba8800b-a816-446f-8521-a512a741a62a', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+-- INSERT INTO pin_board
+--     (pin_id, board_id)
+-- VALUES
+--     ('2baa7b19-ee63-4c5e-88ba-028180bb42b3', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('a191b12f-0c6b-45e7-89f9-28ec3b2490b0', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('92b3ef2c-a44a-4dd5-9627-dc1ae879dade', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('464bf0cc-57ac-452a-ba15-5d4732d6eb43', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('9a1b975d-79f0-45a7-8955-94090cd81746', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('6bdb450e-3ae0-489d-9c38-a6ea07d50085', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('da2b0791-c44c-4a40-abae-610c893038f7', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('861d60b6-20f5-4244-90ea-bf35359af459', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('4ceff8eb-75e3-49b8-9ffb-efa333788d04', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('33096ad5-ebd5-4654-9e2e-2325fc1fedfc', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('3db293af-a1ae-49df-962e-171164343e17', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+INSERT INTO pin_board
+    (pin_id, board_id)
+VALUES
+    ('3b9d4073-0127-4dac-8281-38a357c79d1e', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
 INSERT INTO pin_board
     (pin_id, board_id)
 VALUES
