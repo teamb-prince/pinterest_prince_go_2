@@ -26,7 +26,7 @@ func ServeProfileUser(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 
 		exist, err := auth.CheckToken(data, tokenHeader)
 		if !exist {
-			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			logs.Error("Request: %s, Token does not exist: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}
@@ -67,7 +67,7 @@ func ServeProfilePins(data db.DataStorage) func(http.ResponseWriter, *http.Reque
 
 		exist, err := auth.CheckToken(data, tokenHeader)
 		if !exist {
-			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			logs.Error("Request: %s, Token does not exist: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}
@@ -107,7 +107,7 @@ func ServeProfileBoards(data db.DataStorage) func(http.ResponseWriter, *http.Req
 
 		exist, err := auth.CheckToken(data, tokenHeader)
 		if !exist {
-			logs.Error("Request: %s, user does not exist: %v", RequestSummary(r), err)
+			logs.Error("Request: %s, Token does not exist: %v", RequestSummary(r), err)
 			BadRequest(w, r)
 			return
 		}

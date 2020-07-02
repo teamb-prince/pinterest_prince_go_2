@@ -2,6 +2,7 @@ package auth
 
 import (
 	"os"
+	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/teamb-prince/pinterest_prince_go/models/db"
@@ -34,6 +35,15 @@ func CheckToken(data db.DataStorage, tokenString string) (bool, error) {
 			return false, nil
 		}
 		return false, err
+	}
+	expire, err := GetExpire(tokenString)
+	if err != nil {
+		return false, err
+	}
+	now := time.Now()
+	if expire < now.Unix() {
+		data.DeleteToken(&token)
+		return false, nil
 	}
 	return true, nil
 }

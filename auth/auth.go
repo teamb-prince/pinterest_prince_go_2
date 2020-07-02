@@ -24,7 +24,7 @@ func generateToken(user *db.User) (*db.Token, error) {
 	claims["Role"] = user.Role
 	claims["UserID"] = user.ID
 	claims["CreatedAt"] = time.Now().Unix()
-	claims["Expire"] = time.Now().Add(time.Hour).Unix()
+	claims["Expire"] = time.Now().Add(time.Minute).Unix()
 
 	tokenString, err := jwtToken.SignedString([]byte(os.Getenv("SIGNINGKEY")))
 	if err != nil {
