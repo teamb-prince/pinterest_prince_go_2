@@ -50,6 +50,14 @@ VALUES
 INSERT INTO board
     (id, user_id, name, topic_id, description, created_at)
 VALUES
+    ('ab531e90-407b-44e8-8377-9179e37745b4', 'abetatsu',
+        '夏祭り', '8083e9df-e30e-457f-b853-2bb70fbb025b',
+        '', '2020-07-01 07:07:07+09'
+);
+
+INSERT INTO board
+    (id, user_id, name, topic_id, description, created_at)
+VALUES
     ('596e415e-f74e-46ab-b0dc-a00c70efb8f3', 'mrypq',
         '行きたいスポット', '8083e9df-e30e-457f-b853-2bb70fbb025b',
         'めろの行きたいところです', '2019-07-07 07:07:07+09'
@@ -2966,7 +2974,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('85fd3055-32c7-4db4-9e71-3cba6e0e983c', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/000.jpeg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/000.jpeg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -2974,7 +2982,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('23bfa669-5da1-47ba-9929-0dc09d3a6852', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/001.png',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/001.png', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -2982,7 +2990,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('c6613e88-2439-4f39-ab08-7b22f0519918', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/002.png',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/002.png', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -2990,7 +2998,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('c816bed1-02a5-49c0-ab4d-b9854e841096', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/003.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/003.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -2998,7 +3006,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('bb9d28b6-d66e-4c9d-a698-0979e8c023f9', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/004.png',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/004.png', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3006,7 +3014,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('4b152c23-6009-4d99-883a-670d7f434447', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/005.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/005.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3014,7 +3022,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('6825a98d-ae12-42e7-8e3b-fcd7ae3c1c1e', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/006.png',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/006.png', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3022,7 +3030,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('61df8229-e4af-4d71-8eb7-2f26e8118e2d', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/007.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/007.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3030,7 +3038,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('d5712343-a410-4b12-9941-efdd8501111f', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/008.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/008.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3038,7 +3046,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('94640197-287d-4cf1-820c-509d87042eba', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/009.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/009.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3046,7 +3054,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('cf56c6d5-345c-4e46-a5c3-0cde21830fb9', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/010.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/010.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3054,7 +3062,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('ad15d9c0-d278-4e6a-a5bd-cdeff56232f8', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/011.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/011.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3062,7 +3070,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('0d1c4838-4eaa-433c-9aac-367ae6bea6c7', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/013.jpeg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/013.jpeg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3070,7 +3078,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('uuidireru', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('319cbb8e-2ab3-4409-a6ec-1f2d265288ce', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/matsuri_topic.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/matsuri_topic.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3096,6 +3104,78 @@ values
 --     (pin_id, board_id)
 -- values
 --     ('43a32404-d713-410c-a29c-04ca69eb6a93', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('85fd3055-32c7-4db4-9e71-3cba6e0e983c', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('23bfa669-5da1-47ba-9929-0dc09d3a6852
+', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('c6613e88-2439-4f39-ab08-7b22f0519918', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('c816bed1-02a5-49c0-ab4d-b9854e841096', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('bb9d28b6-d66e-4c9d-a698-0979e8c023f9', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('4b152c23-6009-4d99-883a-670d7f434447', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('6825a98d-ae12-42e7-8e3b-fcd7ae3c1c1e', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('61df8229-e4af-4d71-8eb7-2f26e8118e2d', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('d5712343-a410-4b12-9941-efdd8501111f', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('94640197-287d-4cf1-820c-509d87042eba', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('cf56c6d5-345c-4e46-a5c3-0cde21830fb9', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('ad15d9c0-d278-4e6a-a5bd-cdeff56232f8', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('0d1c4838-4eaa-433c-9aac-367ae6bea6c7', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('319cbb8e-2ab3-4409-a6ec-1f2d265288ce', 'ab531e90-407b-44e8-8377-9179e37745b4');
+
+
 
 insert into pin_board
     (pin_id, board_id)
