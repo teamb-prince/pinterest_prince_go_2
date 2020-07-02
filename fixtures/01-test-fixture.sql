@@ -58,6 +58,14 @@ VALUES
 INSERT INTO board
     (id, user_id, name, topic_id, description, created_at)
 VALUES
+    ('9e5562e9-971d-4eb6-a11a-13bfee260586', 'mrypq2',
+        '昔のアニメ❤︎', '8083e9df-e30e-457f-b853-2bb70fbb025b',
+        '', '2020-07-01 07:07:07+09'
+);
+
+INSERT INTO board
+    (id, user_id, name, topic_id, description, created_at)
+VALUES
     ('596e415e-f74e-46ab-b0dc-a00c70efb8f3', 'mrypq',
         '行きたいスポット', '8083e9df-e30e-457f-b853-2bb70fbb025b',
         'めろの行きたいところです', '2019-07-07 07:07:07+09'
@@ -3078,23 +3086,132 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('319cbb8e-2ab3-4409-a6ec-1f2d265288ce', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('4233a944-8f4f-4db2-b4c6-ec9fa69e2fb9', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/matsuri_topic.jpg',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/matsuri_topic.jpg', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
 
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('d78306b4-5ffc-4ad4-b753-a151f9ae3363', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/000.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/000.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
 
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('09738574-122a-485c-9f52-47e9402a5139', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/001.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/001.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
 
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('65e9ae08-6c08-457e-9f64-4868d5579bfb', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/002.png', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/002.png', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
 
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('6aa08c09-a797-434e-9da5-7bef0034c743', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/003.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/003.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
 
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('53c2ef61-82fc-4c6e-93d4-6f4c1ad41055', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/004.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/004.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
 
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('491fd249-92e1-4a94-8d09-37727a7b1cbe', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/005.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/005.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
 
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('a0093e3e-091a-4f83-9983-4d494443b078', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/006.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/006.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('0f6fdc3e-2304-499e-aa7e-9799c7d4c47e', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/007.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/007.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('9442bdbb-74cf-4ad8-8235-9613f07df00f', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/008.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/008.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('3f083359-bb39-4e39-81be-2e3c9adb883b', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/009.gif', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/009.gif', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('2aad5a47-44f8-45de-b1e5-e956fc243cc1', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/010.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/010.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('fac9b02b-a00f-4820-9d73-ae9c94e3bb7a', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/011.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/011.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('675a8b3f-5bed-4e28-bb9d-65833201b899', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/012.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/012.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES ('31ff3381-2c3a-43bf-a1f0-53a68ba39404', 'mrypq2', 'https://akiba-souken.com/anime/matome/90s/', 'hogehoge',
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/90_illust_topic.jpg', 
+'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/90/90_illust_topic.jpg', 'hogehoge', 'url', 'Illust', '2020-06-30 10:26:12+09');
 
 
 
 
 
 -- pin_board
+
+insert into pin_board(pin_id, board_id)
+VALUES ('d78306b4-5ffc-4ad4-b753-a151f9ae3363','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('09738574-122a-485c-9f52-47e9402a5139','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('65e9ae08-6c08-457e-9f64-4868d5579bfb','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('6aa08c09-a797-434e-9da5-7bef0034c743','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('53c2ef61-82fc-4c6e-93d4-6f4c1ad41055','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('491fd249-92e1-4a94-8d09-37727a7b1cbe','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('a0093e3e-091a-4f83-9983-4d494443b078','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('0f6fdc3e-2304-499e-aa7e-9799c7d4c47e','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('9442bdbb-74cf-4ad8-8235-9613f07df00f','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('3f083359-bb39-4e39-81be-2e3c9adb883b','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('2aad5a47-44f8-45de-b1e5-e956fc243cc1','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('fac9b02b-a00f-4820-9d73-ae9c94e3bb7a','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('675a8b3f-5bed-4e28-bb9d-65833201b899','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+insert into pin_board(pin_id, board_id)
+VALUES ('31ff3381-2c3a-43bf-a1f0-53a68ba39404','9e5562e9-971d-4eb6-a11a-13bfee260586');
+
+
+
+
 insert into pin_board
     (pin_id, board_id)
 values
