@@ -35,6 +35,9 @@ func ServeFeature(data db.DataStorage) func(http.ResponseWriter, *http.Request) 
 
 		vars := mux.Vars(r)
 		featureID, _ := strconv.Atoi(vars["id"])
+		if featureID >= len(featureLabel) {
+			featureID = 1
+		}
 
 		pins, err := data.GetPins(userID, boardID, label[featureID], limit, offset)
 		if err != nil {
