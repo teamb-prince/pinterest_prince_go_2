@@ -3112,8 +3112,7 @@ values
 insert into pin_board
     (pin_id, board_id)
 values
-    ('23bfa669-5da1-47ba-9929-0dc09d3a6852
-', 'ab531e90-407b-44e8-8377-9179e37745b4');
+    ('e743d557-d9ec-408e-ad70-91392f20b12c', 'ab531e90-407b-44e8-8377-9179e37745b4');
 
 insert into pin_board
     (pin_id, board_id)
