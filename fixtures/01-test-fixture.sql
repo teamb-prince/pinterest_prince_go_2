@@ -2841,10 +2841,206 @@ VALUES
         'url', 'Starry Sky', '2020-06-30 10:26:12+09');
 
 
--- pin_board
-INSERT INTO pin_board
-    (pin_id, board_id)
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
+    ('f8557321-4e95-47d7-8206-e91b52b215ec', 'mrypq2', 'https://wonderstrucktraveler.com/the-worlds-most-beautiful-castles/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/101.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/101.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+-- INSERT INTO pin
+--     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+-- VALUES
+--     ('43a32404-d713-410c-a29c-04ca69eb6a93-e91b52b215ec', 'mrypq2', 'https://wonderstrucktraveler.com/the-worlds-most-beautiful-castles/', 'hogehoge',
+--         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/102.jpg',
+--         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/102.jpg', 'hogehoge',
+--         'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('28fde686-b2b4-4ea0-9a3c-dc3457d74e15', 'mrypq2', 'https://wonderstrucktraveler.com/the-worlds-most-beautiful-castles/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/103.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/103.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('193b4ab6-366b-47ae-a343-ec7493ac3745', 'mrypq2', 'https://wonderstrucktraveler.com/the-worlds-most-beautiful-castles/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/104.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/104.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('973deeec-dd93-44d0-ab01-b19ba2bb8c48', 'mrypq2', 'https://wonderstrucktraveler.com/the-worlds-most-beautiful-castles/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/105.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/105.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('ebbc2961-5675-4ef2-9c5c-914688e827f2', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/106.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/106.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('ad635f7b-3e1c-4ceb-b278-0ff7bbad8527', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/107.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/107.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('2f49ccf0-3946-4c70-bd96-f2f8fde6b998', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/108.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/108.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('4fc8b203-9c44-40e7-a79c-701018c25b8a', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/109.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/109.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('ab0cbac0-0937-4414-83e3-b16c0773eef6', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/110.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/110.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+-- INSERT INTO pin
+--     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+-- VALUES
+--     ('43740feb-3784-4875-9fb0-a49c08f9465', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+--         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/111.jpg',
+--         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/111.jpg', 'hogehoge',
+--         'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('d980dbf7-e44e-4e18-ac74-dd1cce7c1983', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/112.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/112.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('62da9ced-c119-4bee-8c59-1146ad89e74f', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/113.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/113.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('ad575d1c-fb70-4065-86ad-61c21817e715', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/114.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/114.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+INSERT INTO pin
+    (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
+VALUES
+    ('26ac66c0-268d-4fe8-b25f-e596f7519dfd', 'mrypq2', 'https://www.veranda.com/travel/g30083514/beautiful-castles-in-the-world/', 'hogehoge',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/115.jpg',
+        'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/thumb/115.jpg', 'hogehoge',
+        'url', 'Castle', '2020-06-30 10:26:12+09');
+
+
+-- pin_board
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('f8557321-4e95-47d7-8206-e91b52b215ec', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+-- insert into pin_board
+--     (pin_id, board_id)
+-- values
+--     ('43a32404-d713-410c-a29c-04ca69eb6a93', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('28fde686-b2b4-4ea0-9a3c-dc3457d74e15', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('193b4ab6-366b-47ae-a343-ec7493ac3745', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('973deeec-dd93-44d0-ab01-b19ba2bb8c48', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('ebbc2961-5675-4ef2-9c5c-914688e827f2', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('ad635f7b-3e1c-4ceb-b278-0ff7bbad8527', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('2f49ccf0-3946-4c70-bd96-f2f8fde6b998', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('4fc8b203-9c44-40e7-a79c-701018c25b8a', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+-- insert into pin_board
+--     (pin_id, board_id)
+-- values
+--     ('43740feb-3784-4875-9fb0-a49c08f94654', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('ab0cbac0-0937-4414-83e3-b16c0773eef6', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('d980dbf7-e44e-4e18-ac74-dd1cce7c1983', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('62da9ced-c119-4bee-8c59-1146ad89e74f', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('ad575d1c-fb70-4065-86ad-61c21817e715', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
+    ('26ac66c0-268d-4fe8-b25f-e596f7519dfd', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
+
+insert into pin_board
+    (pin_id, board_id)
+values
     ('c5ea83c8-c12d-4997-84d5-35b9f9462bb3', '67415bb1-9aab-40da-98ba-a2a0f11d0af0');
 
 INSERT INTO pin_board

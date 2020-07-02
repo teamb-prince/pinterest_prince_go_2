@@ -20,7 +20,7 @@ import (
 )
 
 var (
-	featureLabel = []string{"", "Starry Sky", "Cat", "Desert"}
+	featureLabel = []string{"", "Starry Sky", "Castle", "Desert"}
 )
 
 func ServeFeature(data db.DataStorage) func(http.ResponseWriter, *http.Request) {
