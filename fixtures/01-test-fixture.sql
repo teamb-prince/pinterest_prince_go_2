@@ -2990,7 +2990,7 @@ VALUES
 INSERT INTO pin
     (id, user_id, url, title, image_url, thumb_image_url, description, upload_type, label, created_at)
 VALUES
-    ('23bfa669-5da1-47ba-9929-0dc09d3a6852', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
+    ('e743d557-d9ec-408e-ad70-91392f20b12c', 'abetatsu', 'https://summer.walkerplus.com/odekake/list/sg0999/', 'hogehoge',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/001.png',
         'https://bucket-pinterest-001.s3-ap-northeast-1.amazonaws.com/sample/matsuri/001.png', 'hogehoge',
         'url', 'Matsuri', '2020-06-30 10:26:12+09');
@@ -3289,7 +3289,7 @@ values
 insert into pin_board
     (pin_id, board_id)
 values
-    ('319cbb8e-2ab3-4409-a6ec-1f2d265288ce', 'ab531e90-407b-44e8-8377-9179e37745b4');
+    ('4233a944-8f4f-4db2-b4c6-ec9fa69e2fb9', 'ab531e90-407b-44e8-8377-9179e37745b4');
 
 
 
